@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/tp-clinica-online",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
