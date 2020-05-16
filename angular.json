@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "TP-Clinica-Online"
+    }
+  },
+  "defaultProject": "TP-Clinica-Online",
+  "cli": {
+    "analytics": "810f35fa-21bd-446f-8c14-3396d8f9e53f"
+  }
 }

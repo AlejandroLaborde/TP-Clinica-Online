@@ -1,0 +1,43 @@
+<div class="imagen">
+  <div class="container">
+    <div class="centrar">
+      <div style="margin: 10px;">
+      <app-subir-imagen style="margin: 5px;" (datosImagen)="obtieneImagen1($event)" ></app-subir-imagen>
+      <app-subir-imagen (datosImagen)="obtieneImagen2($event)"></app-subir-imagen>
+     </div>
+      <form class="formulario" [formGroup]="formRegistro" (ngSubmit)="onSubmit()" >
+        <div class="container">
+
+          <label><b>Nombre</b></label>
+          <input type="text" placeholder="Ingresa tu nombre" name="nombre"  formControlName="nombre"  >
+          <label><b>Apellido</b></label>
+          <input type="text" placeholder="Ingresa tu apellido" name="apellido"  formControlName="apellido"  >
+          <label><b>Edad</b></label><br>
+          <input type="number" placeholder="Ingresa tu edad" name="edad"  formControlName="edad"  ><br><br>
+
+          <label><b>Email</b></label>
+          <input type="text" placeholder="Ingresa tu correo" name="email"  formControlName="email"  >
+         
+          <label><b>Clave</b></label>
+          <input type="password" placeholder="Aca la clave" name="psw" formControlName="clave">
+
+          <label><b>Repita la clave</b></label>
+          <input type="password" placeholder="Aca repeti la misa clave  de arriba" name="psw-repeat" formControlName="copyClave" >
+          
+          <div class="alert alert-danger text-center" *ngIf="formInvalido" role="alert">
+            Las claves ingresadas no coinciden, por favor ingrese denuevo
+          </div>
+
+          <div class="clearfix">
+            <button type="button" (click)="volverInicio()" class="cancelbtn">Cancelar</button>
+            <button type="submit" *ngIf="formRegistro.valid" class="signupbtn">Registrarme</button>
+          </div>
+        </div>
+        
+      </form>
+
+      
+    </div>
+  </div>
+</div>
+
