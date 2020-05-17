@@ -9,6 +9,7 @@ export class Usuario{
     public mail: string;
     public contraseña: string;
     public validoCuenta: boolean;
+    public id:string;
 
     constructor(nombre: string,apellido: string,edad: number,mail: string,contraseña: string,validoCuenta: boolean){
         this.nombre=nombre;

@@ -10,7 +10,7 @@
             <h5 class="card-title text-center">Iniciar Sesion</h5>
             <img src="./assets/imagenes/logo.png" class="rounded mx-auto d-block" width="100 px">
             <form >
-              <p for="inputEmail">Usuario</p>
+              <p for="inputEmail">Mail</p>
               <input type="text" id="inputEmail" [(ngModel)]="usuario" [ngModelOptions]="{standalone: true}" placeholder="admin" class="form-control" >
 
                 <p for="inputPassword">Contraseña</p>
@@ -22,7 +22,7 @@
                 <label class="custom-control-label" for="customCheck1">Remember password</label>
               </div>
               
-              <!-- <button *ngIf="logeando" class="btn btn-lg btn-primary btn-block text-uppercase" (click)="MoverBarraDeProgreso()" type="submit">Entrar</button> -->
+              <button *ngIf="logeando" class="btn btn-lg btn-primary btn-block text-uppercase" (click)="Entrar()" type="submit">Entrar</button>
               <div *ngIf="errorLoguin" class="alert alert-danger text-center" role="alert">
                 La clave o el usuario ingresado son incorrectos
                </div>

@@ -5,6 +5,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule,FormsModule} from '@angular/forms';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestore,AngularFirestoreCollection } from '@angular/fire/firestore';
 
 
 
@@ -33,6 +34,7 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule,
     AngularFireAuthModule,
+    
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule

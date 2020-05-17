@@ -20,6 +20,7 @@
          
           <label><b>Clave</b></label>
           <input type="password" placeholder="Aca la clave" name="psw" formControlName="clave">
+          <p>* La clave deve tener un minimo de 6 caracteres</p>
 
           <label><b>Repita la clave</b></label>
           <input type="password" placeholder="Aca repeti la misa clave  de arriba" name="psw-repeat" formControlName="copyClave" >
@@ -30,7 +31,7 @@
 
           <div class="clearfix">
             <button type="button" (click)="volverInicio()" class="cancelbtn">Cancelar</button>
-            <button type="submit" *ngIf="formRegistro.valid" class="signupbtn">Registrarme</button>
+            <button type="submit"  [disabled]="!formRegistro.valid" class="signupbtn">Registrarme</button>
           </div>
         </div>
         

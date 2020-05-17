@@ -12,7 +12,8 @@ export const environment = {
     storageBucket: "clinica-online.appspot.com",
     messagingSenderId: "812816799334",
     appId: "1:812816799334:web:6fd55042c97fb863223fa7"
-  }
+  },
+  hostFirebase:"https://clinica-online.firebaseio.com/"
 };
 
 /*

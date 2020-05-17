@@ -5,7 +5,9 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
 import { Usuario } from 'src/app/models/usuario';
-import { AngularFireAuth } from '@angular/fire/auth';
+import { RegistroService } from 'src/app/services/registro.service';
+import { FileService } from 'src/app/services/file.service';
+import { LoginService } from 'src/app/services/login.service';
 
 
 @Component({
@@ -19,33 +21,32 @@ export class RegistroComponent implements OnInit {
   imagen1;
   imagen2;
 
-  constructor(private AngularFireAuth:AngularFireAuth, private router:Router, private miConstructor: FormBuilder,  private http: HttpClient) {
-    this.AngularFireAuth.createUserWithEmailAndPassword("alee_2695@live.com.ar",'123asd').then(asd=>{
-      console.log(asd);
-      
-    }).catch(err=>{
-      console.log(err);
-    })
+  constructor( private router:Router, 
+              private miConstructor: FormBuilder,  
+              private http: HttpClient, 
+              private registroService:RegistroService,
+              private loguinService:LoginService) {
+    
   }
 
   formRegistro: FormGroup = this.miConstructor.group({
-    email: new FormControl('', [ Validators.email]),
-    nombre: new FormControl('', [ Validators.minLength(3)]),
-    edad: new FormControl(null, [ Validators.min(1)]),
-    apellido: new FormControl('', [ Validators.minLength(3)]),
-    clave: new FormControl('', [ Validators.required]),
-    copyClave: new FormControl('', [Validators.required])
+    email: new FormControl('', [ Validators.email,Validators.required]),
+    nombre: new FormControl('', [ Validators.minLength(3),Validators.required]),
+    edad: new FormControl(null, [ Validators.min(1),Validators.required]),
+    apellido: new FormControl('', [ Validators.minLength(3), Validators.required]),
+    clave: new FormControl('', [Validators.minLength(6), Validators.required]),
+    copyClave: new FormControl('', [Validators.minLength(6),Validators.required])
   });
 
   ngOnInit() {
   
   }
 
+
   onSubmit() {
-    console.log("asd");
     const form = this.formRegistro.value;
     if ( form.clave === form.copyClave ) {
-      this.registro( new Usuario(form.nombre , form.apellido , form.edad,form.mail, form.contraseña, false) );
+      this.registro( new Usuario(form.nombre , form.apellido , form.edad,form.email,form.clave, false) );
     }else {
       this.formInvalido = true;
     }
@@ -55,17 +56,38 @@ export class RegistroComponent implements OnInit {
     this.router.navigate(['/Home']);
   }
 
-  registro( jugador: Usuario ){
-    // Swal.showLoading();
-    // this.jugadoresService.altaJugador(jugador).then(data => {
-    //   Swal.fire({
-    //     icon: 'success',
-    //     title: 'Se registro con Exito',
-    //     text: 'Recuerde que su email es su usuario.',
-    //     showConfirmButton: true,
-    //   })
-    // });
-    // this.router.navigate(['/Login']);
+  registro( usuario: Usuario ){
+    Swal.showLoading();
+    if(this.imagen1 && this.imagen2){
+      this.registroService.registroCuenta(usuario).then(data => {
+        this.registroService.altaDatosUsuario(usuario,this.imagen1,this.imagen2);
+        Swal.fire({
+          icon: 'success',
+          title: 'Se registro con Exito, deve verificar su cuenta, se envio un mail para ello',
+          showConfirmButton: true,
+        }).then(()=>{
+          
+          this.loguinService.logOut();
+          this.router.navigate(['/Login']);
+        })
+      }).catch(err=>{
+        Swal.fire({
+          icon: 'error',
+          title: 'Por favor verifique la informacion ingresada  '+ err,
+          showConfirmButton: true,
+        }).then(()=>{
+  
+        })
+      });
+    }else{
+      Swal.fire({
+        icon: 'error',
+        title: 'Debe ingresar 2 imagenes',
+        showConfirmButton: true,
+      }).then(()=>{
+
+      })
+    }
   }
 
   obtieneImagen1( imagen ){
