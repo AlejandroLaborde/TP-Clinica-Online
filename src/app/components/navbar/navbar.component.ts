@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +9,7 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(public loginService: LoginService) { }
+  constructor(public loginService: LoginService, private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -19,4 +20,20 @@ export class NavbarComponent implements OnInit {
     });
   }
 
+  miPerfil(){
+    this.router.navigate(['MiPerfil']);
+  }
+
+  cambiarpagina( pagina:string){
+
+    switch(pagina){
+      case 'Turnos':
+        this.router.navigate(['Turnos']);
+        break;
+      case 'Home':
+        this.router.navigate(['Home']);
+        break;
+    }
+  }
+  
 }

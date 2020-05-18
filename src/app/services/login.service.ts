@@ -17,10 +17,14 @@ export class LoginService {
     return this.angularFireAuth.signInWithEmailAndPassword(mail,contraseña);
   }
 
-  public logueado(  ){
-    this.usuario.subscribe(asd=>{
-      console.log(asd);
-    }) ;
+  public logueado(){
+    return this.angularFireAuth.currentUser.then(resp=>{
+      if(resp){
+        return true;
+      }else{
+        return false;
+      }
+    })
   }
 
   public logOut(){

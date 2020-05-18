@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Usuario } from '../models/usuario';
 import { FileService } from './file.service';
 import { UsuariosService } from './usuarios.service';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -18,14 +19,22 @@ export class RegistroService {
     return this.angularFireAuth.createUserWithEmailAndPassword(usuario.mail,usuario.contraseña);
   }
 
+  
   public altaDatosUsuario( usuario: Usuario , imagen1, imagen2){
     this.fileService.subirArchivo(usuario.mail+"_img1",imagen1);
     this.fileService.subirArchivo(usuario.mail+"_img2",imagen2);
     this.usuarioService.altaDatosPersona(usuario);
+    this.registroCuenta(usuario);
+    
   }
   
   public enviarMailRegistro(){
-    
+    this.angularFireAuth.currentUser.then( resp=>{
+      resp.sendEmailVerification({
+        handleCodeInApp:true,
+        url:environment.urlVerify
+      })
+    })
   }
 
 }

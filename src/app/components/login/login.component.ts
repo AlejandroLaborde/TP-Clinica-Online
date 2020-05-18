@@ -36,13 +36,21 @@ export class LoginComponent implements OnInit {
 
         console.log(resp);
         if(resp){
-         this.router.navigate(['/Principal']);
-         
+          if(resp.user.emailVerified){
+            this.router.navigate(['/Principal']);
+            Swal.close();
+          }else{
+            Swal.fire({
+              title:"Debe verificar su cuenta de mail para poder continuar",
+              icon:'warning',
+              showConfirmButton:true
+            }).then(()=>{this.logInService.logOut()})
+          }
         }else{
          this.logeando=true;
          this.errorLoguin=true;
         }
-        Swal.close();
+        
       }).catch(error=>{
         Swal.fire({
           title:'Ops! Algo salio mal, Usuario o contraseña erroneos',

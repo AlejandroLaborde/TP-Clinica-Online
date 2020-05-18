@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/services/login.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import { RegistroService } from 'src/app/services/registro.service';
 
 @Component({
   selector: 'app-home',
@@ -9,16 +10,13 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor( private loginService:LoginService, private usuariosService: UsuariosService) { 
+  constructor( private loginService:LoginService, private usuariosService: UsuariosService, private registro:RegistroService) { 
     
   }
 
   ngOnInit(): void {
   }
 
-  ver(){
-    this.loginService.logueado();
-    
-  }
 
+ 
 }

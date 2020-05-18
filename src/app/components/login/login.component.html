@@ -2,8 +2,6 @@
 <body>
   <div class="container" style="height: 100vh;">
     <div class="row">
-    
-
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
         <div class="card card-signin my-5">
           <div class="card-body">
@@ -16,20 +14,15 @@
                 <p for="inputPassword">Contraseña</p>
                 <input type="password" id="inputPassword" [(ngModel)]="clave" [ngModelOptions]="{standalone: true}"  class="form-control" placeholder="admin" required>
             
-
-              <div class="custom-control custom-checkbox mb-3">
-                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                <label class="custom-control-label" for="customCheck1">Remember password</label>
-              </div>
               
               <button *ngIf="logeando" class="btn btn-lg btn-primary btn-block text-uppercase" (click)="Entrar()" type="submit">Entrar</button>
               <div *ngIf="errorLoguin" class="alert alert-danger text-center" role="alert">
                 La clave o el usuario ingresado son incorrectos
                </div>
-              <hr class="my-4">
+              <hr class="">
               <button type="button" class="btn btn-lg btn-primary btn-block text-uppercase" routerLink="/Principal">Cancelar</button>
               <button type="button" class="btn btn-lg btn-danger btn-block text-uppercase" routerLink="/Registro" >Registrarse</button>
-              <span style="display: flex;justify-content: center;">Te olvidaste <a href="#">la clave?</a></span>
+              <!-- <span style="display: flex;justify-content: center;">Te olvidaste <a href="#">la clave?</a></span> -->
             </form>
           </div>
           

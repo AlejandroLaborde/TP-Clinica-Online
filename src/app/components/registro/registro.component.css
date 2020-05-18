@@ -1,6 +1,6 @@
 .imagen{
-    background-image: url('../../../assets/imagenes/signIn.jpg');
-    height: 100vh;
+    background-image: url('../../../assets/imagenes/Fondo-Turnos.jpg');
+    height: 100%;
 }
 .centrar{
     justify-content: center;
@@ -10,7 +10,7 @@
 input[type=text], input[type=password] {
     width: 100%;
     padding: 6px 10px;
-    margin: 8px 0;
+    
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
@@ -47,6 +47,7 @@ button {
     max-width: 500px;
     display: inline-block;
     border-radius: 5px;
+    margin-top:25px;
 }
 /* The Modal (background) */
 .modal {

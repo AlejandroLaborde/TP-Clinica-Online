@@ -13,7 +13,8 @@ export const environment = {
     messagingSenderId: "812816799334",
     appId: "1:812816799334:web:6fd55042c97fb863223fa7"
   },
-  hostFirebase:"https://clinica-online.firebaseio.com/"
+  hostFirebase:"https://clinica-online.firebaseio.com/",
+  urlVerify:'http://localhost:4200/Login'
 };
 
 /*

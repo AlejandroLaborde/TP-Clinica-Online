@@ -11,11 +11,13 @@ export class FileService {
   }
 
   public subirArchivo(nombreArchivo: string, datos: any) {
-    this.storage.upload(nombreArchivo, datos).then(()=>{});
+    this.storage.upload(nombreArchivo, datos).then((asd)=>{
+      console.log(asd);
+    });
   }
 
   public referenciaCloudStorage(nombreArchivo: string) {
-    return this.storage.ref(nombreArchivo);
+        return this.storage.ref(nombreArchivo).getDownloadURL();
   }
   
 }

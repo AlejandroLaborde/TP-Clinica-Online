@@ -6,6 +6,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule,FormsModule} from '@angular/forms';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestore,AngularFirestoreCollection } from '@angular/fire/firestore';
+import { HttpClientModule } from '@angular/common/http';
+import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
+
+
 
 
 
@@ -17,7 +21,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { environment } from 'src/environments/environment';
 import { RegistroComponent } from './components/registro/registro.component';
-import { HttpClientModule } from '@angular/common/http';
+import { MiPerfilComponent } from './components/mi-perfil/mi-perfil.component';
+import { TurnosComponent } from './components/turnos/turnos.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +31,9 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     NavbarComponent,
     HomeComponent,
-    RegistroComponent
+    RegistroComponent,
+    MiPerfilComponent,
+    TurnosComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +41,8 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule,
     AngularFireAuthModule,
-    
+    RecaptchaModule,
+    RecaptchaFormsModule,
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule

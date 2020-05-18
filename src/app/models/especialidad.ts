@@ -2,10 +2,10 @@
 
 export class Especialidad{
 
-    public codigo:number;
+    public codigo:string;
     public descripcion:string;
 
-    constructor( codigo:number, descripcion:string ){
+    constructor( codigo:string, descripcion:string ){
         this.codigo = codigo;
         this.descripcion = descripcion;
     }

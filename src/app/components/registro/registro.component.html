@@ -1,3 +1,6 @@
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+
 <div class="imagen">
   <div class="container">
     <div class="centrar">
@@ -17,14 +20,26 @@
 
           <label><b>Email</b></label>
           <input type="text" placeholder="Ingresa tu correo" name="email"  formControlName="email"  >
-         
+          
+          <label><b>Paciente </b></label><input value="Paciente" (click)="seleccionoProfesional()" type="radio" checked name="tipo" id=""><br>
+          <label><b>Profesional </b></label><input value="Profesional" (click)="seleccionoProfesional()" type="radio" name="tipo" id="">
+          <select multiple *ngIf="profesional" formControlName="especialidadesSelected">
+            <option *ngFor="let item of especialidades" [value]="item">{{item.descripcion}}</option>
+          </select>
+
+          <br>
+           
+
           <label><b>Clave</b></label>
           <input type="password" placeholder="Aca la clave" name="psw" formControlName="clave">
           <p>* La clave deve tener un minimo de 6 caracteres</p>
 
           <label><b>Repita la clave</b></label>
           <input type="password" placeholder="Aca repeti la misa clave  de arriba" name="psw-repeat" formControlName="copyClave" >
-          
+          <re-captcha (resolved)="resolved($event,'as')" 
+                    formControlName="recaptchaReactive" 
+                    siteKey="6Lcv5fgUAAAAALZuvhQHpOBljPWXfGeD165TICyR">  
+         </re-captcha>
           <div class="alert alert-danger text-center" *ngIf="formInvalido" role="alert">
             Las claves ingresadas no coinciden, por favor ingrese denuevo
           </div>
@@ -34,10 +49,9 @@
             <button type="submit"  [disabled]="!formRegistro.valid" class="signupbtn">Registrarme</button>
           </div>
         </div>
-        
-      </form>
-
+    
       
+      </form>
     </div>
   </div>
 </div>
