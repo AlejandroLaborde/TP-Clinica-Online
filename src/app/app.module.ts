@@ -23,6 +23,10 @@ import { environment } from 'src/environments/environment';
 import { RegistroComponent } from './components/registro/registro.component';
 import { MiPerfilComponent } from './components/mi-perfil/mi-perfil.component';
 import { TurnosComponent } from './components/turnos/turnos.component';
+import { ConfiguracionesComponent } from './components/configuraciones/configuraciones.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { EspecialidadesComponent } from './components/especialidades/especialidades.component';
+import { ProfesionalesComponent } from './components/profesionales/profesionales.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +37,11 @@ import { TurnosComponent } from './components/turnos/turnos.component';
     HomeComponent,
     RegistroComponent,
     MiPerfilComponent,
-    TurnosComponent
+    TurnosComponent,
+    ConfiguracionesComponent,
+    FooterComponent,
+    EspecialidadesComponent,
+    ProfesionalesComponent
   ],
   imports: [
     BrowserModule,

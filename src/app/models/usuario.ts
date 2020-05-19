@@ -11,15 +11,14 @@ export class Usuario{
     public id:string;
     public tipo:string;
 
-    constructor(nombre: string,apellido: string,edad: number,mail: string,contraseña: string, tipo?:string){
+    constructor(nombre: string,apellido: string,edad: number,mail: string,contraseña: string, tipos:string){
         this.nombre=nombre;
         this.apellido=apellido;
         this.edad=edad;
         this.mail=mail;
         this.contraseña=contraseña;
-        if(tipo){
-            this.tipo=tipo;
-        }
+        this.tipo=tipos;
+        
         
     }
 

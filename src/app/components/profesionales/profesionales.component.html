@@ -1,0 +1,20 @@
+
+<div class="container">
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Aprobado</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of profesionales">
+            <td>{{item.nombre}}</td>
+            <td>{{item.apellido}}</td>
+            <td>{{item.tipo}}</td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>

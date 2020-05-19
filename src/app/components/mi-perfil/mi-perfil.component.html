@@ -5,6 +5,8 @@
     <div class="card-header">
       <h1>Mi Perfil</h1>
     </div>
+   
+    
     <div *ngIf="usuario" class="card-body">
         <img [src]="imagen1" width="150px" height="150px" alt="" srcset="">
         <img [src]="imagen2" width="150px" height="150px" alt="" srcset="">
@@ -12,21 +14,31 @@
       <h5 class="card-title">Apellido: {{usuario.apellido}}</h5>
       <h5 class="card-title">Edad: {{usuario.edad}} años</h5>
       <h5 class="card-title">Mail: {{usuario.mail}}</h5>
-      <table class="table" >
-        <thead *ngIf="usuario.especialidades">
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Especialidad</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of usuario.especialidades;index as i"  >
-            <td>{{i}}</td>
-            <td>{{item.descripcion}}</td>
-          </tr>
-          
-        </tbody>
-      </table>
+
+        <div  *ngIf="usuario.tipo=='PROFESIONAL'">
+            <div *ngIf="!usuario.aprobado" class="alert alert-danger" role="alert">
+              Aun no fue aprobado para atender en la clinica
+          </div>
+          <div *ngIf="usuario.aprobado" class="alert alert-success" role="alert">
+              Profesional aprobado para atender en la clinica
+          </div>
+          <table class="table">
+            <thead >
+            
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Especialidad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of usuario.especialidades;index as i"  >
+                <td>{{i}}</td>
+                <td>{{item.descripcion}}</td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
     </div>
     <div class="card-footer text-muted">
       En ningun momento expondremos tu contraseña.

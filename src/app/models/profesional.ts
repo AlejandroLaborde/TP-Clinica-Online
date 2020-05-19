@@ -11,7 +11,7 @@ export class Profesional extends Usuario{
     private aprobado: boolean;
     
     constructor( usuario:Usuario, especialidad:Especialidad[] ){
-        super(usuario.nombre,usuario.apellido,usuario.edad,usuario.mail,usuario.contraseña);
+        super(usuario.nombre,usuario.apellido,usuario.edad,usuario.mail,usuario.contraseña,usuario.tipo);
         this.especialidades=especialidad;
         this.aprobado=false;
     }
