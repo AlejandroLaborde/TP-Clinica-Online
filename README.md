@@ -41,8 +41,6 @@ puede configurar el tiempo de sus turnos, por defecto es de 30 min
 USUARIO_ Se registra en el sistema con dos imagenes, puede reservar turnos eligiendo el profesional o la especialidad
 ```
 
-_Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
-
 
 ## Despliegue 📦
 
