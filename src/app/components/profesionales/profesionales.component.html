@@ -33,9 +33,17 @@
           </button>
         </div>
         <div *ngIf="selected" class="modal-body">
-          <h2>{{this.selected.nombre}} {{this.selected.apellido}}</h2>
-          <h5>{{this.selected.mail}}</h5>
-          <h5>{{this.selected.edad}} Años</h5>
+          <div>
+            <img [src]="this.selected.img1" width="100px" alt="">
+            <img [src]="this.selected.img2" width="100px" alt="">
+          </div>
+          <div>
+            <h2>{{this.selected.nombre}} {{this.selected.apellido}}</h2>
+            <h5>{{this.selected.mail}}</h5>
+            <h5>{{this.selected.edad}} Años</h5>
+          </div>
+          
+          
           <table class="table">
             <thead>
               <tr>

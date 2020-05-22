@@ -10,10 +10,8 @@ export class FileService {
 
   }
 
-  public subirArchivo(nombreArchivo: string, datos: any) {
-    this.storage.upload(nombreArchivo, datos).then((asd)=>{
-      console.log(asd);
-    });
+  public subirArchivo(nombreArchivo: string, datos: any,metadata:any) {
+    return this.storage.upload(nombreArchivo, datos, {customMetadata:metadata});
   }
 
   public referenciaCloudStorage(nombreArchivo: string) {

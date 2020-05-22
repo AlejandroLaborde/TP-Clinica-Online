@@ -10,6 +10,8 @@ export class Usuario{
     public contraseña: string;
     public id:string;
     public tipo:string;
+    public img1:string;
+    public img2:string;
 
     constructor(nombre: string,apellido: string,edad: number,mail: string,contraseña: string, tipos:string){
         this.nombre=nombre;
