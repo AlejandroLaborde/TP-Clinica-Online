@@ -60,7 +60,7 @@ export class RegistroComponent implements OnInit {
     const form = this.formRegistro.value;
     if ( form.clave === form.copyClave ) {
       if(this.profesional){
-        this.registro(new Profesional(new Usuario(form.nombre , form.apellido , form.edad,form.email,form.clave,'PROFESIONAL'),form.especialidadesSelected))
+        this.registro(new Profesional(new Usuario(form.nombre , form.apellido , form.edad,form.email,form.clave,'PROFESIONAL'),form.especialidadesSelected,false))
       }else{
         this.registro( new Usuario(form.nombre , form.apellido , form.edad,form.email,form.clave,'USER') );
       }

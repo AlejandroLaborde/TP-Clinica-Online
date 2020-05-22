@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from 'src/app/services/login.service';
-import { UsuariosService } from 'src/app/services/usuarios.service';
-import { RegistroService } from 'src/app/services/registro.service';
+
+
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-home',
@@ -11,8 +11,10 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor( private router:Router ) { 
-    
+
+
+  constructor( private router:Router,) { 
+
   }
 
   ngOnInit(): void {
@@ -21,8 +23,6 @@ export class HomeComponent implements OnInit {
   turnos(){
     this.router.navigate(['Turnos']);
   }
-
-
 
  
 }

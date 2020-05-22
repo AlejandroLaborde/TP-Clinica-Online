@@ -5,7 +5,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule,FormsModule} from '@angular/forms';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { AngularFirestore,AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFirestore,AngularFirestoreCollection, AngularFirestoreModule } from '@angular/fire/firestore';
 import { HttpClientModule } from '@angular/common/http';
 import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 
@@ -28,6 +28,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { EspecialidadesComponent } from './components/especialidades/especialidades.component';
 import { ProfesionalesComponent } from './components/profesionales/profesionales.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +43,7 @@ import { ProfesionalesComponent } from './components/profesionales/profesionales
     FooterComponent,
     EspecialidadesComponent,
     ProfesionalesComponent
+
   ],
   imports: [
     BrowserModule,
@@ -53,7 +55,9 @@ import { ProfesionalesComponent } from './components/profesionales/profesionales
     RecaptchaFormsModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFirestoreModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,12 +9,53 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let item of profesionales">
+        <tr *ngFor="let item of profesionales" (click)="seleccionado(item)" data-toggle="modal" data-target="#exampleModal">
             <td>{{item.nombre}}</td>
             <td>{{item.apellido}}</td>
-            <td>{{item.tipo}}</td>
+            <td *ngIf="item.aprobado"> <button class="btn btn-success" disabled> </button> </td>   
+            <td *ngIf="!item.aprobado"><button class="btn btn-danger" disabled> </button></td> 
         </tr>
 
         </tbody>
     </table>
 </div>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Profesional</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div *ngIf="selected" class="modal-body">
+          <h2>{{this.selected.nombre}} {{this.selected.apellido}}</h2>
+          <h5>{{this.selected.mail}}</h5>
+          <h5>{{this.selected.edad}} Años</h5>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Especialidad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of this.selected.especialidades; let i=index">
+                <td>{{i}}</td>
+                <td>{{item.descripcion}}</td>
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer" style="justify-content: center;" *ngIf="selected">
+          <button *ngIf="!selected.aprobado" type="button" class="btn btn-success" (click)="habilitar()" data-dismiss="modal">Habilitar para  atender</button>
+          <button *ngIf="selected.aprobado" type="button" class="btn btn-success" data-dismiss="modal">Actualmente atiende en la clinica</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+

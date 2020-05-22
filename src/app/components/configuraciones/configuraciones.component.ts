@@ -18,4 +18,13 @@ export class ConfiguracionesComponent implements OnInit {
     })
   }
 
+  habilitaProfesional( seleccion ){
+    console.log(seleccion);
+    this.usuariosService.habilitarProfesional(seleccion).subscribe( respondio=>{
+      this.usuariosService.getProfesionales().subscribe(resp=>{
+        this.profesionales=resp;
+      })
+    })
+  }
+
 }

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { AngularFirestore  } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
+import { Profesional } from '../models/profesional';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +37,10 @@ export class UsuariosService {
   
   getProfesionales(){
     return this.httpClient.get(`${environment.hostFirebase}usuarios.json`).pipe(map(resp=>{return this.filtraProfesionales(resp)}));
+  }
+
+  habilitarProfesional( profesional:Profesional ){
+    return this.httpClient.patch(`${environment.hostFirebase}usuarios/${profesional.id}.json`,{aprobado:true});
   }
 
   private filtraPersonas(mail,lista){

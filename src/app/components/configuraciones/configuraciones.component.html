@@ -2,6 +2,6 @@
 <app-navbar></app-navbar>
 <h1>Configuraciones</h1>
 
-<app-profesionales [profesionales]="this.profesionales"></app-profesionales>
+<app-profesionales [profesionales]="this.profesionales" (habilitarSeleccion)="this.habilitaProfesional($event)"></app-profesionales>
 <app-especialidades></app-especialidades>
 </div>

@@ -16,8 +16,8 @@ const routes: Routes = [
   {path: 'Home' , component: HomeComponent},
   {path: 'Registro' , component: RegistroComponent},
   {path: 'MiPerfil' , component: MiPerfilComponent},
-  {path: 'Turnos' , canActivate:[AuthGuard], component: TurnosComponent},
-  {path: 'Configuraciones' , canActivate:[AuthGuard,AdminGuard], component: ConfiguracionesComponent},
+  {path: 'Turnos' , /*canActivate:[AuthGuard],*/ component: TurnosComponent},
+  {path: 'Configuraciones' , /*canActivate:[AuthGuard,AdminGuard],*/ component: ConfiguracionesComponent},
 
   {path: '**', pathMatch: 'full', redirectTo: 'Home'}
 

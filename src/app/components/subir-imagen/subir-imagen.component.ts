@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { FileService } from 'src/app/services/file.service';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 
 
@@ -18,7 +19,7 @@ export class SubirImagenComponent implements OnInit {
     archivo: new FormControl(null, Validators.required),
   });
 
-  constructor( private fileService:FileService ) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
