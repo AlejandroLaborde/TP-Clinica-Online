@@ -30,9 +30,9 @@ Luego de esto, puede ser atendido, y responder un cuestionario sobre la atencion
 
 ```
 
-### Registro
+### Ingreso
 
-![principal](https://github.com/AlejandroLaborde/TP-Clinica-Online/blob/master/imagenes_readme/registro.mp4)
+![principal](https://github.com/AlejandroLaborde/TP-Clinica-Online/blob/master/imagenes_readme/ingreso.gif)
 
 ## Despliegue 📦
 
