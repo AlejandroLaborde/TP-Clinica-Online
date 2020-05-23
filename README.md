@@ -1,5 +1,41 @@
 # TP-Clinica-Online
 
+Nuestro sistema, permite tener todo el control y manejo sobre una clinica. 
+Permite el alta, baja y modificacion de los distintos perfiles, con sus respectivos atributos, la reserva de turnos y devolucion de la consutla luego de ser atendido.
+El sistema contempla distintos tipos de usuario para su buen funcionamiento
+
+### Usuarios 🔧
+
+_Tenemos 3 tipos de usuarios, ADMINISTRADOR, PROFESIONAL y USUARIO_
+
+```
+ADMINISTRADOR_ Puede agregar a otros administradores al sistema, y es el unico que puede aceptar a los profesionales para atender en la clinica y dar de alta especialidades
+```
+
+```
+PROFESIONAL_ Se registra como profesional de la clinica, y debe ser aceptado para atender en la misma, 
+puede configurar el tiempo de sus turnos, por defecto es de 30 min
+```
+
+```
+USUARIO_ Se registra en el sistema con dos imagenes, puede reservar turnos eligiendo el profesional o la especialidad
+```
+### Registro
+
+![principal](http://octaviovillegas.github.io/CursoIngresoJS/img/principal.gif)
+
+## Despliegue 📦
+
+_El sistema esta deployado en firebase, y se deja el link para poder ingresar a el_
+```
+https://clinica-online.firebaseapp.com/
+```
+
+
+## Construido con 🛠️
+
+_Angular - firebase_
+
 Este es un trabajo practico para UTN-FRA, consta de realizar un sistema el cual tenga manejo de usuarios, y permita al usuario reservar turnos, y ser atendido
 
 ## Requerimientos de la aplicación 🚀
@@ -19,37 +55,3 @@ tener más de una especialidad
 Estamos necesitando un sistema para que cada uno de los tipos de usuarios realicen las tareas
 que se detallan a continuación.
 
-
-
-
-### Usuarios 🔧
-
-_Tenemos 3 tipos de usuarios, ADMIN, PROFESIONAL y USUARIO_
-
-
-
-```
-ADMIN_ Puede agregar a otros admin al sistema, y es el unico que puede aceptar a los profesionales para atender en la clinica y dar de alta especialidades
-```
-
-```
-PROFESIONAL_ Se registra como profesional de la clinica, y debe ser aceptado para atender en la misma, 
-puede configurar el tiempo de sus turnos, por defecto es de 30 min
-```
-
-```
-USUARIO_ Se registra en el sistema con dos imagenes, puede reservar turnos eligiendo el profesional o la especialidad
-```
-
-
-## Despliegue 📦
-
-_El sistema esta deployado en firebase, y se deja el link para poder ingresar a el_
-```
-https://clinica-online.firebaseapp.com/
-```
-
-
-## Construido con 🛠️
-
-_Angular - firebase_
