@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-# TP-Clinica-Online
-=======
+
 # **TP-Clinica-Online**
->>>>>>> 05e272c437a4fd31a341c2e2c13b224f947e318e
 
 Nuestro sistema, permite tener todo el control y manejo sobre una clinica. 
 Permite el alta, baja y modificacion de los distintos perfiles, con sus respectivos atributos, la reserva de turnos y devolucion de la consutla luego de ser atendido.
@@ -13,14 +10,10 @@ El sistema contempla distintos tipos de usuario para su buen funcionamiento
 _Tenemos 3 tipos de usuarios, ADMINISTRADOR, PROFESIONAL y USUARIO_
 
 ```
-<<<<<<< HEAD
-ADMINISTRADOR_ Puede agregar a otros administradores al sistema, y es el unico que puede aceptar a los profesionales para atender en la clinica y dar de alta especialidades
-=======
 ADMINISTRADOR_ 
 Puede agregar a otros administradores al sistema, y es el unico que puede aceptar a los profesionales para atender en la clinica.
 Este mismo puede realizar alta de especialidades, para que esten disponibles en el area de registro.
 
->>>>>>> 05e272c437a4fd31a341c2e2c13b224f947e318e
 ```
 
 ```
@@ -36,17 +29,10 @@ Se registra en el sistema con dos imagenes, puede reservar turnos eligiendo el p
 Luego de esto, puede ser atendido, y responder un cuestionario sobre la atencion recibida.
 
 ```
-<<<<<<< HEAD
+
 ### Registro
-=======
-## Usabilidad 💉 
 
-
-
-
->>>>>>> 05e272c437a4fd31a341c2e2c13b224f947e318e
-
-![principal](http://octaviovillegas.github.io/CursoIngresoJS/img/principal.gif)
+![principal](https://github.com/AlejandroLaborde/TP-Clinica-Online/blob/master/imagenes_readme/registro.mp4)
 
 ## Despliegue 📦
 
