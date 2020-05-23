@@ -13,11 +13,12 @@ export class HomeComponent implements OnInit {
 
 
 
-  constructor( private router:Router,) { 
+  constructor( private router:Router) { 
 
   }
 
   ngOnInit(): void {
+    
   }
 
   turnos(){
