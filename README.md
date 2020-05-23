@@ -8,7 +8,7 @@ El sistema contempla distintos tipos de usuario para su buen funcionamiento
 ### Horarios atencion 🕜
 
 ```
-lunes a viernes en el horario de 8:00 a 19:00, y los
+lunes a viernes en el horario de 8:00 a 19:00.
 sábados en el horario de 8:00 a 14:00.
 ```
 
