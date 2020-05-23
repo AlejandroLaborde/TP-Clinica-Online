@@ -5,6 +5,13 @@ Nuestro sistema, permite tener todo el control y manejo sobre una clinica.
 Permite el alta, baja y modificacion de los distintos perfiles, con sus respectivos atributos, la reserva de turnos y devolucion de la consutla luego de ser atendido.
 El sistema contempla distintos tipos de usuario para su buen funcionamiento
 
+### Horarios atencion 🕜
+
+```
+lunes a viernes en el horario de 8:00 a 19:00, y los
+sábados en el horario de 8:00 a 14:00.
+```
+
 ### Usuarios 🔧
 
 _Tenemos 3 tipos de usuarios, ADMINISTRADOR, PROFESIONAL y USUARIO_
