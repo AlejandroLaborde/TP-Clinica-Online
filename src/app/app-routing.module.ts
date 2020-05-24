@@ -8,6 +8,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { TurnosComponent } from './components/turnos/turnos.component';
 import { AdminGuard } from './guards/admin.guard';
 import { ConfiguracionesComponent } from './components/configuraciones/configuraciones.component';
+import { MisTurnosComponent } from './components/mis-turnos/mis-turnos.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path: 'Login' , component: LoginComponent},
   {path: 'Home' , component: HomeComponent},
   {path: 'Registro' , component: RegistroComponent},
-  {path: 'MiPerfil' , component: MiPerfilComponent},
+  {path: 'MiPerfil' ,/*canActivate:[AuthGuard],*/ component: MiPerfilComponent},
+  {path: 'MisTurnos' ,/*canActivate:[AuthGuard],*/ component: MisTurnosComponent},
   {path: 'Turnos' , /*canActivate:[AuthGuard],*/ component: TurnosComponent},
   {path: 'Configuraciones' , /*canActivate:[AuthGuard,AdminGuard],*/ component: ConfiguracionesComponent},
 

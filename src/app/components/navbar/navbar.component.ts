@@ -39,6 +39,9 @@ export class NavbarComponent implements OnInit {
       case 'Configuraciones':
         this.router.navigate(['Configuraciones']);
         break;
+      case 'MisTurnos':
+        this.router.navigate(['MisTurnos']);
+        break;
     }
   }
   

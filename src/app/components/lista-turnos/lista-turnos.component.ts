@@ -8,14 +8,12 @@ import { Turno } from 'src/app/models/turno';
 })
 export class ListaTurnosComponent implements OnInit {
 
-  @Input() turnos: Turno[]
-  listaHorarios:[];
+  @Input() turnos: Turno[];
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
-  reservar(turno){
-    console.log(turno);
-  }
+ 
 }

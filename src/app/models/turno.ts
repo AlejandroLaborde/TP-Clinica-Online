@@ -1,26 +1,29 @@
+import { Profesional } from './profesional';
+import { Especialidad } from './especialidad';
+import { Usuario } from './usuario';
 
 
 
 export class Turno{
 
+    public id:string;
     public hora:string;
     public dia:string;
-    public idEspecialista: string;
-    public nombreEspecialista: string;
-    public idPaciente:string;
-    public nombrePaciente:string;
-    public especialidad:string;
-    public id:string;
+    public especialidad:Especialidad;
+    public profesional:Profesional;
+    public paciente:Usuario;
+    public resena:String;
 
-    constructor( idEspecialista:string ,nombreEspecialista:string , idPaciente:string,nombrePaciente:string, especialidad:string, horaTurno:string , dia:string , id?:string ){
+    constructor( hora:string,dia:string,especialidad:Especialidad,profesional:Profesional,paciente?:Usuario , id?:string ){
         
-        this.hora=horaTurno;
-        this.idEspecialista=idEspecialista;
-        this.nombreEspecialista = nombreEspecialista;
-        this.nombrePaciente = nombrePaciente;
-        this.idPaciente=idPaciente;
-        this.especialidad=especialidad;
+        this.hora=hora;
         this.dia=dia;
+        this.especialidad=especialidad;
+        this.profesional=profesional;
+        if(paciente){
+            this.paciente=paciente;
+        }
+        
         if(id){
             this.id=id;
         }

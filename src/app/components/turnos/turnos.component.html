@@ -9,11 +9,11 @@
     <app-buscar-turno 
         [especialidades]="this.especialidadesList" 
         [profesionales]="this.profesionales"
-        (seleccionaEspecialidad)="escuchaBuscar($event)">
+        (nuevoTurno)="verDisponibilidad($event)">
     </app-buscar-turno>
 
-    <!-- <app-lista-turnos></app-lista-turnos> -->
-    
+
+   
     
 </div>
 

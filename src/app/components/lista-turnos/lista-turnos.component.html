@@ -1,25 +1,7 @@
 
 
 
-
-<div class="card" style="justify-content: center;" >
-  <h5 class="card-header">Día y Horario</h5>
-  <div class="card-body">
-    
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <label class="input-group-text" for="inputGroupSelect01">Dia</label>
-      </div>
-      <input type="date" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-      <div class="input-group-prepend">
-        <label class="input-group-text" for="inputGroupSelect01">Horario</label>
-      </div>
-      <select class="custom-select"  id="profesionalInput"> 
-        <option [value]="item.id" *ngFor="let item of this.listaHorarios">{{item.apellido}}</option>
-    </select>
-    </div>
-    
-    <!-- <table class="table" >
+    <table class="table" >
       <thead class="thead-light">
         <tr>
             <th scope="col">#</th>
@@ -27,22 +9,23 @@
             <th scope="col">Profesional</th>
             <th scope="col">Dia</th>
             <th scope="col">Horario</th>
-            <th scope="col">Reservar</th>
+            <th scope="col">Reseña</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let turno of turnos; i as index">
-          <th scope="row">{{index}}</th>
-          <td>{{turno.especialidad}}<i class="fas fa-list"></i></td>
-          <td>{{turno.nombreEspecialista}}</td>
+        <tr  *ngFor="let turno of turnos; let i=index" >
+          <th scope="row">{{i}}</th>
+          <td>{{turno.especialidad.descripcion}}<i class="fas fa-list"></i></td>
+          <td>{{turno.profesional.nombre}} {{turno.profesional.apellido}}</td>
           <td>{{turno.dia}}</td>
           <td>{{turno.hora}}</td>
-          <td><button class="btn btn-success" (reservar)="reservar(turno)">Reservar</button></td>
+          <td *ngIf="turno.resena" ><button class="btn btn-success">Ver Reseña</button></td>
+          <td *ngIf="!turno.resena" ><button class="btn btn-secondary">Aun no fue atendido</button></td>
+          
         </tr>
-    </table> -->
-
-
-  </div>
-</div>
-
-
+      </table>
+          <div  *ngIf="!turnos" class="alert alert-warning" role="alert">
+            <h4 class="alert-heading"></h4>
+            <p style="text-align: center;">No se encontraron turnos para mostrar</p>
+            <p class="mb-0"></p>
+          </div>

@@ -4,6 +4,7 @@
         
           <a class="nav-link" style="color: black;" (click)="cambiarpagina('Home')">Home <span class="sr-only">(current)</span></a>
           <a class="nav-link" style="color: black;" (click)="cambiarpagina('Turnos')">Solicitar Turno <span class="sr-only">(current)</span></a>
+          <a class="nav-link" *ngIf="(loginService.angularFireAuth.user | async)" style="color: black;" (click)="cambiarpagina('MisTurnos')">Mis Turnos <span class="sr-only">(current)</span></a>
        
       </div>      
 

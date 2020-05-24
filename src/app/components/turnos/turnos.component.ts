@@ -10,6 +10,9 @@ import { TurnosService } from 'src/app/services/turnos.service';
 import { LoginService } from 'src/app/services/login.service';
 import { Turno } from 'src/app/models/turno';
 import { Profesional } from 'src/app/models/profesional';
+import { Usuario } from 'src/app/models/usuario';
+import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-turnos',
@@ -25,7 +28,8 @@ export class TurnosComponent implements OnInit {
   constructor( private especialidadesService:EspecialidadesService,
                 private turnoService: TurnosService,
                 private loginService: LoginService,
-                private usuarioService:UsuariosService
+                private usuarioService:UsuariosService,
+                private router:Router
                 ) { 
     this.especialidadesService.obtenerEspecialidades().subscribe(resp=>{
       this.especialidadesList = resp;
@@ -39,7 +43,63 @@ export class TurnosComponent implements OnInit {
    
   }
 
-  escuchaBuscar( seleccionado ){
-    console.log(seleccionado);
+  verDisponibilidad(turno:Turno){
+
+    this.turnoService.verDisponibilidad(turno.profesional.id,turno.hora, turno.dia).then(disponible=>{
+      if(disponible){
+        Swal.fire({
+          icon:'info',
+          html: '<div class="card mb-3" style="max-width: 540px;">'+
+          '<div class="row no-gutters">'+
+            '<div class="col-md-4" style="display: flex;">'+
+              '<img src="'+turno.profesional.img1+'" class="card-img" alt="...">'+
+            '</div>'+
+            '<div class="col-md-8">'+
+              '<div class="card-body">'+
+                '<h5 class="card-title">'+ turno.especialidad.descripcion +'</h5>'+
+                '<h6 class="card-text">Profesional: '+ turno.profesional.nombre + ' '+ turno.profesional.apellido +'</h6>'+
+                '<h6 class="card-text">Dia y horario: '+ turno.dia +' - '+ turno.hora+'</h6>'+
+              '</div>'+
+            '</div>'+
+          '</div>'+
+        '</div>',
+          titleText:"Confirmacion de Turno",
+          showCancelButton: true,
+          confirmButtonText: 'Confirmar',
+          cancelButtonText: 'Cancelar',
+        }).then(respuesta=>{
+          if(respuesta.value){
+            this.loginService.angularFireAuth.user.subscribe(datos=>{
+              this.usuarioService.getDatosPersona(datos.email).subscribe( (persona:Usuario) => {
+                turno.paciente=persona;
+                this.turnoService.altaTurno(turno).subscribe(asd=>{
+                  Swal.fire({
+                    icon:'success',
+                    titleText:'Reservado'
+                  }).then(()=>{
+                    this.router.navigate(['Home']);
+                  }); 
+                });
+              });
+            });
+          }else{
+            Swal.fire({
+              icon:'error',
+              titleText:'Cancelado'
+            }); 
+          }});
+
+
+      }else{
+        Swal.fire({
+          title:"Oopss!!",
+          icon:'error',
+          titleText:"El turno en ese horario ya fue reservado. PorFavor seleccione otro"
+        })
+      }
+    });
+
+    
+
   }
 }

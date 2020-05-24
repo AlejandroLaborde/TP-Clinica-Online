@@ -10,6 +10,7 @@ import { FileService } from 'src/app/services/file.service';
 import { LoginService } from 'src/app/services/login.service';
 import { EspecialidadesService } from 'src/app/services/especialidades.service';
 import { Profesional } from 'src/app/models/profesional';
+import { Especialidad } from 'src/app/models/especialidad';
 
 
 @Component({
@@ -23,7 +24,7 @@ export class RegistroComponent implements OnInit {
   profesional=false;
   imagen1;
   imagen2;
-  especialidades=[];
+  especialidades:Especialidad[] = [];
   constructor( private router:Router, 
               private miConstructor: FormBuilder,  
               private http: HttpClient, 
@@ -47,7 +48,7 @@ export class RegistroComponent implements OnInit {
 
   ngOnInit() {
     this.especialidadesService.obtenerEspecialidades().subscribe(resp=>{
-      console.log(resp);
+      
       this.especialidades=resp;
     })
   }

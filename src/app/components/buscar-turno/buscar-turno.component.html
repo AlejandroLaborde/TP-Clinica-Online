@@ -35,7 +35,7 @@
     
 
       <a class="btn btn-danger btn-block"  [hidden]="this.formBuscar.valid">seleccione una opcion</a>
-      <a class="btn btn-success btn-block" [hidden]="!this.formBuscar.valid" (click)="buscar()">Buscar</a>
+      <a class="btn btn-success btn-block" [hidden]="!this.formBuscar.valid" (click)="buscar(false)">Buscar</a>
     </div>
 
 
@@ -47,14 +47,15 @@
           <div class="input-group-prepend">
             <label class="input-group-text" for="inputGroupSelect01">Dia</label>
           </div>
-          <input type="date" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+          <input type="date" [(ngModel)]="dia" class="form-control" (change)="cambioDia($event)" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
           <div class="input-group-prepend">
-            <label class="input-group-text" for="inputGroupSelect01" (change)="cambioDia($event)">Horario</label>
+            <label class="input-group-text" for="inputGroupSelect01" >Horario</label>
           </div>
-          <select class="custom-select"  id="profesionalInput"> 
+          <select class="custom-select" [(ngModel)]="hora" id="profesionalInput"> 
             <option [value]="item" *ngFor="let item of this.listaHorarios">{{item}}</option>
         </select>
         </div>
+        <a class="btn btn-primary btn-block" [hidden]="!this.dia"  (click)="reservar()">Reservar</a>
       </div>
     </div>
 </div>

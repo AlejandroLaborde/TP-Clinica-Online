@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { AngularFirestore  } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
 import { Profesional } from '../models/profesional';
+import { Usuario } from '../models/usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -48,7 +49,7 @@ export class UsuariosService {
   }
 
   private filtraPersonas(mail,lista){
-    let usuario;
+    let usuario:Usuario;
     this.objecToArray(lista).forEach(element=>{
       if(mail == element.mail){
         usuario=element;
