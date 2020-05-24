@@ -28,6 +28,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { EspecialidadesComponent } from './components/especialidades/especialidades.component';
 import { ProfesionalesComponent } from './components/profesionales/profesionales.component';
 import { BuscarTurnoComponent } from './components/buscar-turno/buscar-turno.component';
+import { ListaTurnosComponent } from './components/lista-turnos/lista-turnos.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { BuscarTurnoComponent } from './components/buscar-turno/buscar-turno.com
     FooterComponent,
     EspecialidadesComponent,
     ProfesionalesComponent,
-    BuscarTurnoComponent
+    BuscarTurnoComponent,
+    ListaTurnosComponent
 
   ],
   imports: [

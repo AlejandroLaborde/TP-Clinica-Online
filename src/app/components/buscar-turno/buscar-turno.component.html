@@ -8,7 +8,7 @@
 
 
 <div class="card" style="justify-content: center;">
-    <h5 class="card-header">Buscador de Turnos</h5>
+    <h5 class="card-header">Especialidad y Profesional</h5>
     <div class="card-body">
       <!-- <h5 class="card-title">Special title treatment</h5>
       <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
@@ -17,13 +17,50 @@
             <div class="input-group-prepend">
             <label class="input-group-text" for="inputGroupSelect01">Especialidad</label>
             </div>
-            <select class="custom-select" id="inputGroupSelect01" formControlName="especialidad"> 
+            <select class="custom-select" id="inputGroupSelect01" (change)="cambioSeleccion($event)" formControlName="especialidad"> 
             <option [value]="item.codigo" *ngFor="let item of this.especialidades">{{item.descripcion}}</option>
             </select>
          </div>
+         <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Profesinales</label>
+          </div>
+          <select class="custom-select"  id="profesionalInput" (change)="cambioProfesional($event)"> 
+              <option [value]="-1" *ngIf="this.profesionalesDisponibles.length!=0" selected>Es indistinto...</option>
+              <option [value]="0" *ngIf="this.profesionalesDisponibles.length==0"selected >No hay profesionales disponibles</option>
+              <option [value]="item.id" *ngFor="let item of this.profesionalesDisponibles">{{item.apellido}}</option>
+          </select>
+        </div>
         </form>
     
 
-      <a class="btn btn-success btn-block" (click)="buscar()">Buscar</a>
+      <a class="btn btn-danger btn-block"  [hidden]="this.formBuscar.valid">seleccione una opcion</a>
+      <a class="btn btn-success btn-block" [hidden]="!this.formBuscar.valid" (click)="buscar()">Buscar</a>
+    </div>
+
+
+    <div class="card" style="justify-content: center;" *ngIf="listaHorarios" >
+      <h5 class="card-header">Día y Horario</h5>
+      <div class="card-body">
+        
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Dia</label>
+          </div>
+          <input type="date" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01" (change)="cambioDia($event)">Horario</label>
+          </div>
+          <select class="custom-select"  id="profesionalInput"> 
+            <option [value]="item" *ngFor="let item of this.listaHorarios">{{item}}</option>
+        </select>
+        </div>
+      </div>
     </div>
 </div>
+
+
+
+
+
+

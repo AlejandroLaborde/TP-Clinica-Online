@@ -49,12 +49,14 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Especialidad</th>
+                <th scope="col">Duracion</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let item of this.selected.especialidades; let i=index">
                 <td>{{i}}</td>
                 <td>{{item.descripcion}}</td>
+                <td>{{item.duracion}} min</td>
             </tbody>
           </table>
         </div>

@@ -38,6 +38,10 @@ export class UsuariosService {
   getProfesionales(){
     return this.httpClient.get(`${environment.hostFirebase}usuarios.json`).pipe(map(resp=>{return this.filtraProfesionales(resp)}));
   }
+  
+  getProfesionalesAprobado(){
+    return this.httpClient.get(`${environment.hostFirebase}usuarios.json`).pipe(map(resp=>{return this.filtraProfesionalesAprobados(resp)}));
+  }
 
   habilitarProfesional( profesional:Profesional ){
     return this.httpClient.patch(`${environment.hostFirebase}usuarios/${profesional.id}.json`,{aprobado:true});
@@ -63,6 +67,15 @@ export class UsuariosService {
     return usuarios;
   }
   
+  private filtraProfesionalesAprobados(lista){
+    let usuarios=[];
+    this.objecToArray(lista).forEach(element=>{
+      if(element.tipo == "PROFESIONAL" && element.aprobado){
+        usuarios.push(element);
+      }
+    })
+    return usuarios;
+  }
 
 
   private retornaTipo(mail,lista){
