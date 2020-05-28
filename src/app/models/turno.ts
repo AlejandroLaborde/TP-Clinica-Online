@@ -13,13 +13,15 @@ export class Turno{
     public profesional:Profesional;
     public paciente:Usuario;
     public resena:String;
+    public estado:String;
 
-    constructor( hora:string,dia:string,especialidad:Especialidad,profesional:Profesional,paciente?:Usuario , id?:string ){
+    constructor( hora:string,dia:string,especialidad:Especialidad,profesional:Profesional,estado:string ,paciente?:Usuario , id?:string ){
         
         this.hora=hora;
         this.dia=dia;
         this.especialidad=especialidad;
         this.profesional=profesional;
+        this.estado=estado;
         if(paciente){
             this.paciente=paciente;
         }

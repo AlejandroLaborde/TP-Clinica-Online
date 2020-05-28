@@ -35,7 +35,7 @@ export class BuscarTurnoComponent implements OnInit {
   }
 
   reservar(){
-    let turnoNuevo = new Turno(this.hora,this.dia,this.selectedEspecialidad,this.profesionalSeleccionado);
+    let turnoNuevo = new Turno(this.hora,this.dia,this.selectedEspecialidad,this.profesionalSeleccionado,'ESPERA');
     this.nuevoTurno.emit(turnoNuevo);
   }
 
@@ -73,22 +73,31 @@ export class BuscarTurnoComponent implements OnInit {
   cambioDia(event){
     var myDate = new Date(this.dia);
     let hoy = new Date();
+    let diff = (myDate.getTime()-hoy.getTime())/(1000*60*60*24);
     if(hoy>myDate){
       Swal.fire({
         title: 'Debe seleccionar un día superior a la fecha de hoy'
       })
       this.dia= null;
     }else{
-      if (myDate.getDay() == 5){
-        this.buscar(true);
-      }else{
-        this.buscar(false);
-      }
-      if (myDate.getDay() == 6){
+
+      if(diff < 0 || diff > 15){
         Swal.fire({
-          title: 'No se atienden los dias Domingo, por favor elija otro día'
-        });
-        this.dia = null;
+          title: 'Solo se pueden seleccionar turnos dentro de los proximos 15 dias'
+        })
+        this.dia= null;
+      }else{
+        if (myDate.getDay() == 5){
+          this.buscar(true);
+        }else{
+          this.buscar(false);
+        }
+        if (myDate.getDay() == 6){
+          Swal.fire({
+            title: 'No se atienden los dias Domingo, por favor elija otro día'
+          });
+          this.dia = null;
+        }
       }
     }
 

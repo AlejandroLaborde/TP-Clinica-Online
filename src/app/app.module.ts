@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID,NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AppRoutingModule } from './app-routing.module';
@@ -8,11 +8,11 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestore,AngularFirestoreCollection, AngularFirestoreModule } from '@angular/fire/firestore';
 import { HttpClientModule } from '@angular/common/http';
 import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
+import { registerLocaleData } from '@angular/common';
 
 
-
-
-
+import localeEsAr from '@angular/common/locales/es-AR';
+registerLocaleData(localeEsAr, 'es-Ar');
 
 import { AppComponent } from './app.component';
 import { SubirImagenComponent } from './components/subir-imagen/subir-imagen.component';
@@ -65,7 +65,7 @@ import { MisTurnosComponent } from './components/mis-turnos/mis-turnos.component
     AngularFirestoreModule
     
   ],
-  providers: [],
+  providers: [{ provide: LOCALE_ID, useValue: 'es-Ar' } ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

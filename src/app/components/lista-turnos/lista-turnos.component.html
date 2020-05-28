@@ -10,6 +10,7 @@
             <th scope="col">Dia</th>
             <th scope="col">Horario</th>
             <th scope="col">Reseña</th>
+            <th scope="col">Estado</th>
         </tr>
       </thead>
       <tbody>
@@ -17,11 +18,11 @@
           <th scope="row">{{i}}</th>
           <td>{{turno.especialidad.descripcion}}<i class="fas fa-list"></i></td>
           <td>{{turno.profesional.nombre}} {{turno.profesional.apellido}}</td>
-          <td>{{turno.dia}}</td>
+          <td>{{turno.dia | date}}</td>
           <td>{{turno.hora}}</td>
           <td *ngIf="turno.resena" ><button class="btn btn-success">Ver Reseña</button></td>
-          <td *ngIf="!turno.resena" ><button class="btn btn-secondary">Aun no fue atendido</button></td>
-          
+          <td *ngIf="!turno.resena" ><button class="btn btn-secondary">Aun no hay reseña</button></td>
+          <td>{{turno.estado}}</td>
         </tr>
       </table>
           <div  *ngIf="!turnos" class="alert alert-warning" role="alert">
