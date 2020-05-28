@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Turno } from 'src/app/models/turno';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-lista-turnos',
@@ -13,6 +14,13 @@ export class ListaTurnosComponent implements OnInit {
 
   ngOnInit(): void {
 
+  }
+
+  verResena(turno){
+    Swal.fire({
+      title:'Reseña del profesional',
+      text:turno.resena
+    })
   }
 
  

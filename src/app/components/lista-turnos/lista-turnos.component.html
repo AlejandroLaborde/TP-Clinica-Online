@@ -19,7 +19,7 @@
           <td>{{turno.profesional.nombre}} {{turno.profesional.apellido}}</td>
           <td>{{turno.dia}}</td>
           <td>{{turno.hora}}</td>
-          <td *ngIf="turno.resena" ><button class="btn btn-success">Ver Reseña</button></td>
+          <td *ngIf="turno.resena" ><button class="btn btn-success" (click)="verResena(turno)">Ver Reseña</button></td>
           <td *ngIf="!turno.resena" ><button class="btn btn-secondary">Aun no fue atendido</button></td>
           
         </tr>

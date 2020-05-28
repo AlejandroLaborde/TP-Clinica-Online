@@ -20,7 +20,7 @@
               Aun no fue aprobado para atender en la clinica
           </div>
           <div *ngIf="usuario.aprobado" class="alert alert-success" role="alert">
-              Profesional aprobado para atender en la clinica
+              <button class="btn btn-block" [routerLink]="['/Atender']"   >Empezar a atender</button>
           </div>
           <table class="table">
             <thead >
