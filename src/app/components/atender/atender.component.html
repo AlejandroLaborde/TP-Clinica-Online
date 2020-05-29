@@ -1,0 +1,21 @@
+
+
+
+<div class="principal">
+    <app-navbar></app-navbar>
+    <div class="container">
+        <br>
+       <div class="row">
+            <div class="col-md-3 " style="padding: 5px;" *ngFor="let item of this.misReservas">
+              <div class="card tarjetas">
+                <div class="card-body" (click)="atender(item)">
+                    <h5 class="card-title">{{item.dia | date}}</h5>
+                    <p class="card-text">{{item.paciente.nombre}} {{item.paciente.apellido}}</p>
+                  <p class="card-text">{{item.hora}}</p>
+                </div>
+              </div>
+            </div>
+        </div>
+
+    </div>
+</div>

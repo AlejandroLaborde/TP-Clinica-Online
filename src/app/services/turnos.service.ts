@@ -27,6 +27,14 @@ export class TurnosService {
   public getTurnosPaciente(idUsuario){
     return this.getTodosTurnos().pipe(map(resp=>{return this.filtraTurnosUsuario(resp,idUsuario)}));
   }
+
+  public altaResena( idTurno:string, resena:string ){
+    return this.httpClient.patch(`${environment.hostFirebase}/turnos/${idTurno}.json`,{resena:resena});
+  }
+  
+  public eliminarTurno( idTurno:string){
+    return this.httpClient.delete(`${environment.hostFirebase}/turnos/${idTurno}.json`);
+  }
   
   public verDisponibilidad( idProfesinal:string, hora:string, dia:string){
     return this.getTurnosProfesional(idProfesinal).then( (turnos:Turno[])=>{
@@ -54,7 +62,7 @@ export class TurnosService {
   private filtraTurnosProfesional(lista,id){
     let turnos=[];
     this.objecToArray(lista).forEach((element:Turno)=>{
-      if(element.profesional.id == id){
+      if(element.profesional.id == id && element.resena==null){
         turnos.push(element);
       }
     })

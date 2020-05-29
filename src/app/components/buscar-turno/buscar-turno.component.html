@@ -26,9 +26,9 @@
             <label class="input-group-text" for="inputGroupSelect01">Profesinales</label>
           </div>
           <select class="custom-select"  id="profesionalInput" (change)="cambioProfesional($event)"> 
-              <option [value]="-1" *ngIf="this.profesionalesDisponibles.length!=0" selected>Es indistinto...</option>
+              <option [value]="-1" *ngIf="this.profesionalesDisponibles.length!=0" selected>Elegir una Opcion</option>
               <option [value]="0" *ngIf="this.profesionalesDisponibles.length==0"selected >No hay profesionales disponibles</option>
-              <option [value]="item.id" *ngFor="let item of this.profesionalesDisponibles">{{item.apellido}}</option>
+              <option [value]="item.id"  *ngFor="let item of this.profesionalesDisponibles">{{item.apellido}}</option>
           </select>
         </div>
         </form>

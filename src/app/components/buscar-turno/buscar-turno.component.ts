@@ -40,6 +40,7 @@ export class BuscarTurnoComponent implements OnInit {
   }
 
   buscar(sabado){
+
     if(this.formBuscar.valid){
       this.especialidades.forEach(element => {
         if(element.codigo == this.formBuscar.value.especialidad ){
@@ -50,9 +51,16 @@ export class BuscarTurnoComponent implements OnInit {
   }
 
   cambioProfesional(e){
-    //this.profesionalesDisponibles=[];
-    let indice = e.target.selectedIndex;
-    this.profesionalSeleccionado = this.profesionales[indice-1];
+    console.log(e.srcElement.value);
+   
+    if(e.srcElement.value != "-1"){
+
+      this.profesionales.forEach(profesional=>{
+        if(profesional.id == e.srcElement.value){
+          this.profesionalSeleccionado = profesional;
+        }
+      })
+    }
   }
 
   cambioSeleccion(e){
@@ -62,6 +70,7 @@ export class BuscarTurnoComponent implements OnInit {
     this.profesionalesDisponibles=[];
     this.profesionales.forEach(element => {
       element.especialidades.forEach(especialidad => {
+        console.log(this.especialidades[indice].codigo);
         if(especialidad.codigo == this.especialidades[indice].codigo){
           this.selectedEspecialidad = especialidad;
           this.profesionalesDisponibles.push(element);
@@ -106,11 +115,11 @@ export class BuscarTurnoComponent implements OnInit {
   preparaListaHorarios( profesional: Profesional, especialidad:Especialidad , sabado:boolean ){
 
     if(profesional == null){
-
+      console.error("error?");
     }else{
       profesional.especialidades.forEach(resp=>{
         if(resp.codigo==especialidad.codigo){
-          switch(resp.duracion){
+          switch(resp.duracion){          
             case 30:
               if(sabado){
                 this.listaHorarios = this.turnosService.listaTurnosDuracion30Sabado();

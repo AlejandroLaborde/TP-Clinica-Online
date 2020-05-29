@@ -11,6 +11,7 @@
             <th scope="col">Horario</th>
             <th scope="col">Reseña</th>
             <th scope="col">Estado</th>
+            <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
@@ -20,9 +21,12 @@
           <td>{{turno.profesional.nombre}} {{turno.profesional.apellido}}</td>
           <td>{{turno.dia | date}}</td>
           <td>{{turno.hora}}</td>
+
           <td *ngIf="turno.resena" ><button class="btn btn-success">Ver Reseña</button></td>
-          <td *ngIf="!turno.resena" ><button class="btn btn-secondary">Aun no hay reseña</button></td>
+          <td *ngIf="!turno.resena" ><button class="btn btn-secondary">Sin reseña</button></td>
           <td>{{turno.estado}}</td>
+          <td *ngIf="turno.estado!= 'FINALIZADO'" ><p style="color: red;" (click)="eliminarTurno(turno)">Eliminar</p></td>
+
         </tr>
       </table>
           <div  *ngIf="!turnos" class="alert alert-warning" role="alert">

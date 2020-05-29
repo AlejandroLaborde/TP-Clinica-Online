@@ -4,6 +4,6 @@
 <app-navbar></app-navbar>
 <h1 style="text-align: center;">Mis Turnos</h1>
 <div class="container">
-<app-lista-turnos [turnos]="this.misTurnos"></app-lista-turnos>
+<app-lista-turnos [turnos]="this.misTurnos" (eliminar)="eliminaTurno($event)"></app-lista-turnos>
 </div>
 </div>

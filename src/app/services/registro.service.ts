@@ -20,8 +20,8 @@ export class RegistroService {
   }
 
   public altaDatosUsuario( usuario: Usuario , imagen1, imagen2){
-    this.fileService.subirArchivo(usuario.mail+"_img1",imagen1,{persona:usuario.nombre+" "+usuario.apellido}).then((img)=>{
-      this.fileService.subirArchivo(usuario.mail+"_img2",imagen2,{persona:usuario.nombre+" "+usuario.apellido}).then(img2=>{
+    this.fileService.subirArchivo(usuario.mail+"_img1",imagen1,usuario).then((img)=>{
+      this.fileService.subirArchivo(usuario.mail+"_img2",imagen2,usuario).then(img2=>{
        img.ref.getDownloadURL().then(data=>{
         usuario.img1=data;
         img2.ref.getDownloadURL().then(data2=>{

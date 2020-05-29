@@ -1,0 +1,18 @@
+
+.principal{
+    text-align: center;
+    background-image: url('../../../assets/imagenes/Calendario.jpg');
+    background-repeat: no-repeat;
+    height: 100vh;
+    size: 100vh;
+}
+
+.tarjetas{
+    box-shadow: 5px 5px 5px grey
+
+}
+
+.tarjetas:hover{
+    right: 3px;
+    bottom: 3px;
+}

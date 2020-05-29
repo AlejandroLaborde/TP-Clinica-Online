@@ -3,6 +3,7 @@ import { Turno } from 'src/app/models/turno';
 import { TurnosService } from 'src/app/services/turnos.service';
 import { LoginService } from 'src/app/services/login.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-mis-turnos',
@@ -32,4 +33,24 @@ export class MisTurnosComponent implements OnInit {
     });
   }
 
+  eliminaTurno(turnoAEliminar:Turno){
+    Swal.fire({
+      icon:'warning',
+      title:'¿Seguro que deseas eliminar turno?',
+      showCancelButton:true,
+      showConfirmButton:true,
+      cancelButtonText:'Cancelar',
+      confirmButtonText:'Eliminar',
+      confirmButtonColor:'red',
+    }).then( resp=>{
+      if(resp.value){
+        this.turnosService.eliminarTurno(turnoAEliminar.id).subscribe( eliminado=>{
+          console.log(eliminado);
+          Swal.fire({
+            icon:'success'
+          })
+        })
+      }
+    })
+  }
 }
