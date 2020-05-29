@@ -3,6 +3,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
 
 import * as FileSaver from 'file-saver';
 import * as XLSX from 'xlsx'
+import { Usuario } from '../models/usuario';
 
 const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
 const EXCEL_EXTENSION = '.xlsx';
@@ -17,7 +18,7 @@ export class FileService {
   }
 
   public subirArchivo(nombreArchivo: string, datos: any,metadata:any) {
-    return this.storage.upload(nombreArchivo, datos, {customMetadata:metadata});
+    return this.storage.upload(nombreArchivo, datos, {customMetadata:metadata });
   }
 
   public referenciaCloudStorage(nombreArchivo: string) {

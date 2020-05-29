@@ -21,6 +21,7 @@ import { Especialidad } from 'src/app/models/especialidad';
 export class RegistroComponent implements OnInit {
 
   formInvalido = false;
+  nuevaEspe=false;
   profesional=false;
   imagen1;
   imagen2;
@@ -48,7 +49,6 @@ export class RegistroComponent implements OnInit {
 
   ngOnInit() {
     this.especialidadesService.obtenerEspecialidades().subscribe(resp=>{
-      
       this.especialidades=resp;
     })
   }
@@ -61,6 +61,7 @@ export class RegistroComponent implements OnInit {
     const form = this.formRegistro.value;
     if ( form.clave === form.copyClave ) {
       if(this.profesional){
+        
         this.registro(new Profesional(new Usuario(form.nombre , form.apellido , form.edad,form.email,form.clave,'PROFESIONAL'),form.especialidadesSelected,false))
       }else{
         this.registro( new Usuario(form.nombre , form.apellido , form.edad,form.email,form.clave,'USER') );
@@ -68,6 +69,22 @@ export class RegistroComponent implements OnInit {
     }else {
       this.formInvalido = true;
     }
+  }
+
+
+
+  nuevaEspecialidad(especialidad){
+    this.especialidadesService.altaEspecialidad(especialidad).subscribe(resp=>{
+      Swal.fire({
+        icon:'success',
+        title:'Se dio de alta especialidad'
+      }).then(()=>{
+        this.especialidadesService.obtenerEspecialidades().subscribe(resp=>{
+          this.especialidades=resp;
+        });
+        this.nuevaEspe=false;
+      })
+    });
   }
 
   volverInicio(){

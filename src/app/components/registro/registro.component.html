@@ -3,7 +3,9 @@
 
 <div class="imagen">
   <div class="container">
+
     <div class="centrar">
+
       <div style="margin: 10px;">
       <app-subir-imagen style="margin: 5px;" (datosImagen)="obtieneImagen1($event)" ></app-subir-imagen>
       <app-subir-imagen (datosImagen)="obtieneImagen2($event)"></app-subir-imagen>
@@ -26,9 +28,10 @@
           <select multiple *ngIf="profesional" formControlName="especialidadesSelected">
             <option *ngFor="let item of especialidades" [value]="item">{{item.descripcion}}</option>
           </select>
-
+          <a style="max-width: 50px;margin-left: 10px;color: green"  *ngIf="profesional" (click)="this.nuevaEspe=true" ><i class="fa fa-plus"></i></a>
+          <app-alta-especialidades *ngIf="nuevaEspe" (nuevaEspecialidad)="nuevaEspecialidad($event)" ></app-alta-especialidades>
           <br>
-           
+            
 
           <label><b>Clave</b></label>
           <input type="password" placeholder="Aca la clave" name="psw" formControlName="clave">
@@ -52,7 +55,8 @@
     
       
       </form>
+      
     </div>
   </div>
 </div>
-
+  

@@ -1,7 +1,11 @@
 <div class="principal">
 <app-navbar></app-navbar>
 <h1>Configuraciones</h1>
+<div class="container">
 
+    
+</div>
 <app-profesionales [profesionales]="this.profesionales" (habilitarSeleccion)="this.habilitaProfesional($event)"></app-profesionales>
 <app-especialidades></app-especialidades>
+<app-alta-especialidades (nuevaEspecialidad)="altaEspecialidad($event)"></app-alta-especialidades>
 </div>

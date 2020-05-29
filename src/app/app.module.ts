@@ -31,6 +31,7 @@ import { BuscarTurnoComponent } from './components/buscar-turno/buscar-turno.com
 import { ListaTurnosComponent } from './components/lista-turnos/lista-turnos.component';
 import { MisTurnosComponent } from './components/mis-turnos/mis-turnos.component';
 import { AtenderComponent } from './components/atender/atender.component';
+import { AltaEspecialidadesComponent } from './components/alta-especialidades/alta-especialidades.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { AtenderComponent } from './components/atender/atender.component';
     BuscarTurnoComponent,
     ListaTurnosComponent,
     MisTurnosComponent,
-    AtenderComponent
+    AtenderComponent,
+    AltaEspecialidadesComponent
 
   ],
   imports: [

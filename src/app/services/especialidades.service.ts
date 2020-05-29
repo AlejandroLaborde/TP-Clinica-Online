@@ -15,9 +15,8 @@ export class EspecialidadesService {
     return this.httpClient.get(`${environment.hostFirebase}especialidades.json`).pipe(map(resp=>this.objecToArray(resp)))
   }
 
-  altaEspecialidad(nombre:string){
-    this.httpClient.post(`${environment.hostFirebase}especialidades.json`,{nombre:nombre}).subscribe(resp=>{
-    })
+  altaEspecialidad(especialidad:Especialidad){
+    return this.httpClient.post(`${environment.hostFirebase}especialidades.json`,especialidad);
   }
 
 
@@ -26,9 +25,8 @@ export class EspecialidadesService {
     if(datos == null) return [];
 
     Object.keys( datos ).forEach( key =>{
-          let especialidad:Especialidad=new Especialidad(key,datos[key].nombre);
+          let especialidad:Especialidad=new Especialidad(datos[key].descripcion,datos[key].activo,datos[key].duracion, key);
           especialidades.push(especialidad);
-        
     })
     return especialidades;
   }
