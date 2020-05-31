@@ -34,6 +34,7 @@ export class MisTurnosComponent implements OnInit {
   }
 
   eliminaTurno(turnoAEliminar:Turno){
+    console.log(turnoAEliminar);
     Swal.fire({
       icon:'warning',
       title:'¿Seguro que deseas eliminar turno?',
@@ -48,6 +49,24 @@ export class MisTurnosComponent implements OnInit {
           console.log(eliminado);
           Swal.fire({
             icon:'success'
+          }).then(()=>{
+            this.loginService.currentUser().then(  usuario=>{
+              this.usuarioService.getDatosPersona(usuario.email).subscribe( datos => {
+                  this.turnosService.getTurnosPaciente(datos.id).subscribe( turnos => {
+                    this.misTurnos = turnos.sort((a,b)=>{
+                      if(a.dia > b.dia){
+                        return 1;
+                      }else{
+                        return -1;
+                      }
+                    });
+                  });
+              });
+            });
+
+
+
+
           })
         })
       }

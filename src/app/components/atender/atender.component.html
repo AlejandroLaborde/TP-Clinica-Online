@@ -5,16 +5,29 @@
     <app-navbar></app-navbar>
     <div class="container">
         <br>
+        <div class="row">
+          <button class="btn btn-secondary" (click)="agenda()"><i class="fa fa-address-book"></i> Ver Agenda</button>
+          <button  class="btn btn-info" (click)="soloHoy()"><i class="fa fa-calendar"></i> Solo Hoy</button>
+        </div>
        <div class="row">
-            <div class="col-md-3 " style="padding: 5px;" *ngFor="let item of this.misReservas">
+            <div class="col-md-3 " style="padding: 5px;" *ngFor="let item of this.misReservasPantalla">
               <div class="card tarjetas">
-                <div class="card-body" (click)="atender(item)">
+                <div class="card-body" >
                     <h5 class="card-title">{{item.dia | date}}</h5>
                     <p class="card-text">{{item.paciente.nombre}} {{item.paciente.apellido}}</p>
                   <p class="card-text">{{item.hora}}</p>
+                  <div class="row" style="justify-content: center;">
+                    <button *ngIf='item.estado=="ESPERA"' class="btn btn-success" (click)="aceptar(item)" ><i class="fa fa-check-square"></i></button>
+                    <button *ngIf='item.estado=="ESPERA"' class="btn btn-danger" (click)="rechazar(item)"><i class="fa fa-window-close"></i></button>
+                    <button *ngIf='item.estado!="ESPERA"' class="btn btn-primary" (click)="atender(item)"><i class="fa fa-user-times"></i></button>
+                    <button *ngIf='item.estado!="ESPERA"' class="btn btn-secondary" (click)="cancelar(item)"><i class="fa fa-trash"></i></button>
+                  </div>
                 </div>
               </div>
             </div>
+        </div>
+        <div *ngIf="this.misReservasPantalla.length===0" class="alert alert-warning" role="alert">
+          No se encontraron turnos para mostrar
         </div>
 
     </div>

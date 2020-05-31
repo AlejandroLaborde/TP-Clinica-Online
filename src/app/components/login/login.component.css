@@ -147,3 +147,37 @@ h5{
     color: #777;
   }
 }
+
+
+
+
+
+.float{
+  position:absolute;
+  right:20px;
+  bottom:50px;
+}
+
+.float2{
+  position:absolute;
+  right:20px;
+  bottom:100px;
+}
+
+.float3{
+  position:absolute;
+  right:20px;
+  bottom:150px;
+}
+
+.float4{
+  position:absolute;
+  right:20px;
+  bottom:200px;
+}
+
+.float5{
+  position:absolute;
+  right:20px;
+  bottom:250px;
+}

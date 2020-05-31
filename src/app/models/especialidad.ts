@@ -5,11 +5,19 @@ export class Especialidad{
     public codigo:string;
     public descripcion:string;
     public duracion:number;
+    public activo:boolean;
 
-    constructor( codigo:string, descripcion:string ){
-        this.codigo = codigo;
+    constructor(  descripcion:string,activo:boolean,duracion:number,codigo?:string){
         this.descripcion = descripcion;
-        this.duracion=30;
+        this.activo=activo;
+        if(codigo){
+            this.codigo = codigo;
+        }
+        if(duracion){
+            this.duracion=duracion;
+        }else{
+            this.duracion=30;
+        }
     }
 
 }

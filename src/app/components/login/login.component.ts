@@ -59,6 +59,33 @@ export class LoginComponent implements OnInit {
       });
   }
 
+  usuarioMock( user ){
+
+    switch(user){
+      
+        case 'ADMIN1':
+              this.clave='123123';
+              this.usuario='alabordeparodi@gmail.com';
+            break;
+        case 'ADMIN2':
+              this.clave='123123';
+              this.usuario="alabordeparodi.sofrecom@supervielle.com.ar";
+            break;
+        case 'USER1':
+              this.clave='123123';
+              this.usuario="g.iglesiasalonzo@gmail.com";
+            break;
+        case 'PROFESIONAL1':
+            this.clave='123123';
+            this.usuario="alee_2695@live.com.ar";
+          break;      
+        case 'PROFESIONAL2':
+              this.clave='123123';
+              this.usuario="alaborde@sofrecom.com.ar";
+            break;
+
+    }
+  }
   
 
 }

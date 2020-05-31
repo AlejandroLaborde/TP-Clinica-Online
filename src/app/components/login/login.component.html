@@ -2,6 +2,7 @@
 <body>
   <div class="container" style="height: 100vh;">
     <div class="row">
+      
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
         <div class="card card-signin my-5">
           <div class="card-body">
@@ -28,8 +29,25 @@
           
         </div>
       </div>
-     
+  
      
     </div>
   </div>
+
+  <div class="float">
+    <button type="button" class="btn btn-lg btn-success btn-block text-uppercase" (click)="usuarioMock('ADMIN1')" >ADMIN1</button>
+  </div>
+  <div class="float2">
+    <button type="button" class="btn btn-lg btn-success btn-block text-uppercase" (click)="usuarioMock('ADMIN2')" >ADMIN2</button>
+  </div>
+  <div class="float3">
+    <button type="button" class="btn btn-lg btn-danger btn-block text-uppercase" (click)="usuarioMock('USER1')" >USER1</button>
+  </div>
+  <div class="float4">
+    <button type="button" class="btn btn-lg btn-primary btn-block text-uppercase" (click)="usuarioMock('PROFESIONAL1')" >PROFESIONAL1</button>
+  </div>
+  <div class="float5">
+    <button type="button" class="btn btn-lg btn-primary btn-block text-uppercase" (click)="usuarioMock('PROFESIONAL2')" >PROFESIONAL2</button>
+  </div>
+
 </body>

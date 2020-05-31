@@ -1,0 +1,21 @@
+
+
+
+
+
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">Alta de especialidad</h5>
+      <input type="text" class="form-control" placeholder="Ej: Dentista" [(ngModel)]="especialidadNueva" ria-label="especialidad" aria-describedby="addon-wrapping">
+      <div class="input-group-prepend" style="margin-top: 5px;">
+        <label class="input-group-text" for="inputGroupSelect01">Duracion</label> 
+        <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="duracion">
+            <option value="30">30 min</option>
+            <option value="20">20 min</option>
+            <option value="40">40 min</option>
+          </select>
+      </div>
+      
+      <a class="btn btn-success" (click)="alta()" style="margin-top: 5px;">Agregar</a>
+    </div>
+  </div>

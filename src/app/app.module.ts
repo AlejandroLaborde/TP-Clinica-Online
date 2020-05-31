@@ -31,6 +31,11 @@ import { BuscarTurnoComponent } from './components/buscar-turno/buscar-turno.com
 import { ListaTurnosComponent } from './components/lista-turnos/lista-turnos.component';
 import { MisTurnosComponent } from './components/mis-turnos/mis-turnos.component';
 import { AtenderComponent } from './components/atender/atender.component';
+import { AltaEspecialidadesComponent } from './components/alta-especialidades/alta-especialidades.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatSliderModule } from '@angular/material/slider';
+import { EncuestaProfesionalComponent } from './components/encuesta-profesional/encuesta-profesional.component';
 
 
 @NgModule({
@@ -50,7 +55,9 @@ import { AtenderComponent } from './components/atender/atender.component';
     BuscarTurnoComponent,
     ListaTurnosComponent,
     MisTurnosComponent,
-    AtenderComponent
+    AtenderComponent,
+    AltaEspecialidadesComponent,
+    EncuestaProfesionalComponent
 
   ],
   imports: [
@@ -64,7 +71,9 @@ import { AtenderComponent } from './components/atender/atender.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    NoopAnimationsModule,
+    
     
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'es-Ar' } ],
