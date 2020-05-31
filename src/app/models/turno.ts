@@ -1,6 +1,8 @@
 import { Profesional } from './profesional';
 import { Especialidad } from './especialidad';
 import { Usuario } from './usuario';
+import { EncuestaProfesional } from './EncuestaProfesional';
+import { EncuestaPaciente } from './EncuestaPaciente';
 
 
 
@@ -12,8 +14,9 @@ export class Turno{
     public especialidad:Especialidad;
     public profesional:Profesional;
     public paciente:Usuario;
-    public resena:String;
     public estado:String;
+    public encuestaProfesional:EncuestaProfesional;
+    public encuestaPaciente:EncuestaPaciente;
 
     constructor( hora:string,dia:string,especialidad:Especialidad,profesional:Profesional,estado:string ,paciente?:Usuario , id?:string ){
         

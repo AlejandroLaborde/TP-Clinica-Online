@@ -33,9 +33,9 @@ import { MisTurnosComponent } from './components/mis-turnos/mis-turnos.component
 import { AtenderComponent } from './components/atender/atender.component';
 import { AltaEspecialidadesComponent } from './components/alta-especialidades/alta-especialidades.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-
-import { MatSliderModule } from '@angular/material/slider';
 import { EncuestaProfesionalComponent } from './components/encuesta-profesional/encuesta-profesional.component';
+import { EncuestaPacienteComponent } from './components/encuesta-paciente/encuesta-paciente.component';
+import { DiasYHorariosComponent } from './components/dias-yhorarios/dias-yhorarios.component';
 
 
 @NgModule({
@@ -57,7 +57,9 @@ import { EncuestaProfesionalComponent } from './components/encuesta-profesional/
     MisTurnosComponent,
     AtenderComponent,
     AltaEspecialidadesComponent,
-    EncuestaProfesionalComponent
+    EncuestaProfesionalComponent,
+    EncuestaPacienteComponent,
+    DiasYHorariosComponent
 
   ],
   imports: [

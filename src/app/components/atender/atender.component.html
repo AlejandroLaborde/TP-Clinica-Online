@@ -8,19 +8,25 @@
         <div class="row">
           <button class="btn btn-secondary" (click)="agenda()"><i class="fa fa-address-book"></i> Ver Agenda</button>
           <button  class="btn btn-info" (click)="soloHoy()"><i class="fa fa-calendar"></i> Solo Hoy</button>
+          <button  class="btn btn-danger" (click)="cambiarHorarios()"><i class="fa fa-calendar"></i> Cambiar mis dias/Horarios</button>
         </div>
-       <div class="row">
+        <app-dias-yhorarios *ngIf="horarios" [diasProfesional]="this.diasProfesional" (diasProfesionalchange)="cambioDias($event)"></app-dias-yhorarios>
+        <app-encuesta-paciente *ngIf="encuesta" (encuestaPaciente)="escuchaEncuesta($event)"  ></app-encuesta-paciente>
+        
+       <div *ngIf="!encuesta" class="row">
             <div class="col-md-3 " style="padding: 5px;" *ngFor="let item of this.misReservasPantalla">
               <div class="card tarjetas">
                 <div class="card-body" >
                     <h5 class="card-title">{{item.dia | date}}</h5>
                     <p class="card-text">{{item.paciente.nombre}} {{item.paciente.apellido}}</p>
                   <p class="card-text">{{item.hora}}</p>
+                  <p class="card-text">{{item.estado}}</p>
                   <div class="row" style="justify-content: center;">
                     <button *ngIf='item.estado=="ESPERA"' class="btn btn-success" (click)="aceptar(item)" ><i class="fa fa-check-square"></i></button>
                     <button *ngIf='item.estado=="ESPERA"' class="btn btn-danger" (click)="rechazar(item)"><i class="fa fa-window-close"></i></button>
-                    <button *ngIf='item.estado!="ESPERA"' class="btn btn-primary" (click)="atender(item)"><i class="fa fa-user-times"></i></button>
-                    <button *ngIf='item.estado!="ESPERA"' class="btn btn-secondary" (click)="cancelar(item)"><i class="fa fa-trash"></i></button>
+                    <button *ngIf='item.estado!="ESPERA"' [hidden]="item.encuestaProfesional"  class="btn btn-primary" (click)="atender(item)"><i class="fa fa-user-times"></i></button>
+                    <button *ngIf='item.estado!="ESPERA"' [hidden]="item.encuestaProfesional"  class="btn btn-secondary" (click)="cancelar(item)"><i class="fa fa-trash"></i></button>
+                    <button *ngIf='item.encuestaProfesional' class="btn btn-primary" (click)="comentario(item)">Comentario Cliente</button>
                   </div>
                 </div>
               </div>

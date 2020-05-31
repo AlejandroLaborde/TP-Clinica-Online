@@ -13,6 +13,8 @@ import Swal from 'sweetalert2';
 export class MisTurnosComponent implements OnInit {
 
   misTurnos:Turno[];
+  encuesta=false;
+  turnoEncuesta:Turno;
   constructor( private turnosService:TurnosService,
                 private loginService:LoginService,
                 private usuarioService:UsuariosService ) { }
@@ -31,6 +33,18 @@ export class MisTurnosComponent implements OnInit {
           });
       });
     });
+  }
+
+  verEncuesta(turno){
+    this.encuesta=true;
+    this.turnoEncuesta=turno;
+  }
+
+  escuchaEncuesta(event){
+    this.turnosService.altaEncuestaProfesional(this.turnoEncuesta,event).subscribe( ()=>{
+      this.encuesta=false;
+      this.turnoEncuesta=null;
+    })
   }
 
   eliminaTurno(turnoAEliminar:Turno){

@@ -1,0 +1,40 @@
+
+
+
+<div class="card">
+    <div class="card-header">
+      Dias y Horarios
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Seleccionar</th>
+                <th scope="col">Dia</th>
+                <th scope="col">horario inicio</th>
+                <th scope="col">Horario fin</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let dia of diasProfesional">
+                <td><input type="checkbox" name="" [(ngModel)]="dia.trabaja" [value]="dia.trabaja" id=""></td>
+                <td>{{dia.dia}}</td>
+                <td>
+                    <select class="custom-select" [(ngModel)]="dia.inicia" id="profesionalInput"> 
+                        <option [value]="item" *ngFor="let item of this.listaHorarios">{{item}}</option>
+                    </select>
+                </td>
+                <td>
+                    <select class="custom-select" [(ngModel)]="dia.finaliza" id="profesionalInput"> 
+                        <option [value]="item" *ngFor="let item of this.listaHorariossalida">{{item}}</option>
+                    </select>
+                </td>
+                
+              </tr>
+            </tbody>
+          </table>
+          <button class="btn btn-primary btn-block" (click)="guardar()">Guardar</button>
+    </div>
+</div>
+
+

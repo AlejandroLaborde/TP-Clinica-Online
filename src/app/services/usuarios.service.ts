@@ -48,6 +48,14 @@ export class UsuariosService {
     return this.httpClient.patch(`${environment.hostFirebase}usuarios/${profesional.id}.json`,{aprobado:true});
   }
 
+  cambiaDiasYhorarios( idProfesional,dias){
+    return this.httpClient.patch(`${environment.hostFirebase}usuarios/${idProfesional}.json`,{dias:dias});
+  }
+
+  obtenerDiasYHorarios(idProfesional){
+    return this.httpClient.get(`${environment.hostFirebase}usuarios/${idProfesional}/dias.json`).pipe(map(resp=>{return this.objecToArray(resp)}));
+  }
+
   private filtraPersonas(mail,lista){
     let usuario:Usuario;
     this.objecToArray(lista).forEach(element=>{

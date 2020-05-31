@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Turno } from 'src/app/models/turno';
 import Swal from 'sweetalert2';
+import { EncuestaProfesionalComponent } from '../encuesta-profesional/encuesta-profesional.component';
 
 @Component({
   selector: 'app-lista-turnos',
@@ -11,16 +12,23 @@ export class ListaTurnosComponent implements OnInit {
 
   @Input() turnos: Turno[];
   @Output() eliminar = new  EventEmitter<Turno>();
+  @Output() contestarEncuesta = new  EventEmitter<Turno>();
   constructor() { }
 
   ngOnInit(): void {
 
   }
 
-  verResena(turno){
+  verResena(turno:Turno){
     Swal.fire({
       title:'Reseña del profesional',
-      text:turno.resena
+      text:turno.encuestaPaciente.resena,
+      confirmButtonText:'Contestar Encuesta'
+      
+    }).then(value=>{
+      if(value.value){
+        this.contestarEncuesta.emit(turno);
+      }
     })
   }
 

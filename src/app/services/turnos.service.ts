@@ -28,6 +28,14 @@ export class TurnosService {
     return this.httpClient.get(`${environment.hostFirebase}/turnos.json`).pipe(map(resp=>{return this.filtraTurnosUsuario(resp,idUsuario)}));
   }
 
+  public altaEncuestaProfesional( turno:Turno , encuesta ){
+    return this.httpClient.patch(`${environment.hostFirebase}/turnos/${turno.id}.json`,{encuestaProfesional:encuesta});
+  }
+  
+  public altaEncuestaPaciente( turno:Turno , encuesta ){
+    return this.httpClient.patch(`${environment.hostFirebase}/turnos/${turno.id}.json`,{encuestaPaciente:encuesta});
+  }
+
   public altaResena( idTurno:string, resena:string ){
     return this.httpClient.patch(`${environment.hostFirebase}/turnos/${idTurno}.json`,{resena:resena});
   }
@@ -76,7 +84,7 @@ export class TurnosService {
   private filtraTurnosProfesional(lista,id){
     let turnos=[];
     this.objecToArray(lista).forEach((element:Turno)=>{
-      if(element.profesional.id == id && element.resena==null){
+      if(element.profesional.id == id){
         turnos.push(element);
       }
     })

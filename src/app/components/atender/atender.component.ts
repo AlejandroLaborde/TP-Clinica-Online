@@ -5,6 +5,8 @@ import { LoginService } from 'src/app/services/login.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { Dia } from 'src/app/models/dia';
+import { Usuario } from 'src/app/models/usuario';
 
 
 @Component({
@@ -16,6 +18,12 @@ export class AtenderComponent implements OnInit {
 
   misReservas:Turno[];
   misReservasPantalla:Turno[];
+  encuesta=false;
+  turnoEncuesta:Turno;
+  horarios:boolean=false;
+  diasProfesional:Dia[];
+  persona:Usuario;
+
   constructor( private turnosService:TurnosService,
               private loginService:LoginService,
               private usuarioService:UsuariosService,
@@ -26,9 +34,24 @@ export class AtenderComponent implements OnInit {
     
   }
 
+  cambioDias(nuevosDias){
+    this.usuarioService.cambiaDiasYhorarios(this.persona.id,nuevosDias).subscribe(()=>{
+      this.horarios=false;
+      Swal.fire({
+        icon:'success',
+        title:'Se cambiaron correctamente'
+      })
+    })
+  }
+
   traeTurnos(){
     this.loginService.currentUser().then(usuario=>{
       this.usuarioService.getDatosPersona(usuario.email).subscribe(persona=>{
+        this.persona=persona;
+        this.usuarioService.obtenerDiasYHorarios(persona.id).subscribe(dias=>{
+          this.diasProfesional=dias;
+        })
+
         this.turnosService.getTurnosProfesional(persona.id).then(turnos=>{
           this.misReservas=turnos;
           this.misReservasPantalla=turnos;
@@ -36,6 +59,8 @@ export class AtenderComponent implements OnInit {
       })
     })
   }
+
+ 
 
   agenda(){
     this.misReservasPantalla=this.misReservas;
@@ -77,9 +102,16 @@ export class AtenderComponent implements OnInit {
         })
       }
     })
-    
-    
   }
+
+  comentario(turno:Turno){
+    Swal.fire({
+      title: 'Comentario Paciente',
+      text: turno.encuestaProfesional.comentario,
+    })
+  }
+  
+
   aceptar( turno:Turno ){
     this.turnosService.aceptarTurno(turno.id).subscribe(()=>{ 
       this.traeTurnos();
@@ -110,28 +142,19 @@ export class AtenderComponent implements OnInit {
 
   
   atender(item){
-    
-    Swal.fire({
-      title: 'Ingrese la devolucion de la sesion',
-      input: 'text',
-      inputAttributes: {
-        autocapitalize: 'off'
-      },
-      confirmButtonText: 'Enviar',
-      allowOutsideClick: () => !Swal.isLoading()
-    }).then((result) => {
-      if (result.value) {
-        this.turnosService.atender(item.id,result.value).subscribe(()=>{
-          Swal.fire({
-            title:'Se guardo la reseña',
-            icon:'success'
-          }).then(()=>{
-            this.traeTurnos();
-          })
-        })  
-      }
+    this.encuesta=true;
+    this.turnoEncuesta=item;
+  }
+
+  escuchaEncuesta(evento){
+    this.turnosService.altaEncuestaPaciente(this.turnoEncuesta,evento).subscribe(()=>{
+      this.encuesta=false;
+      this.turnoEncuesta=null;
     })
-    
+  }
+
+  cambiarHorarios(){
+    this.horarios =!this.horarios;
   }
 
 }

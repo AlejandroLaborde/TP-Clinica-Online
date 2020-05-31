@@ -22,8 +22,8 @@
           <td>{{turno.dia | date}}</td>
           <td>{{turno.hora}}</td>
 
-          <td *ngIf="turno.resena" ><button class="btn btn-success" (click)="verResena(turno)">Ver Reseña</button></td>
-          <td *ngIf="!turno.resena" ><button class="btn btn-secondary">Sin reseña</button></td>
+          <td *ngIf="turno.encuestaPaciente" ><button class="btn btn-success" (click)="verResena(turno)">Ver Reseña</button></td>
+          <td *ngIf="!turno.encuestaPaciente" ><button class="btn btn-secondary">Sin reseña</button></td>
           <td>{{turno.estado}}</td>
           <td  *ngIf='turno.estado!="FINALIZADO"' ><p style="color: red;" (click)="eliminarTurno(turno)"><i class="fa fa-trash"></i></p></td>
 
