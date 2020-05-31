@@ -25,6 +25,7 @@ export class ListaTurnosComponent implements OnInit {
   }
 
   eliminarTurno(turno){
+    console.log(turno);
     this.eliminar.emit(turno);
   }
  

@@ -25,7 +25,7 @@ export class TurnosService {
   }
 
   public getTurnosPaciente(idUsuario){
-    return this.getTodosTurnos().pipe(map(resp=>{return this.filtraTurnosUsuario(resp,idUsuario)}));
+    return this.httpClient.get(`${environment.hostFirebase}/turnos.json`).pipe(map(resp=>{return this.filtraTurnosUsuario(resp,idUsuario)}));
   }
 
   public altaResena( idTurno:string, resena:string ){
@@ -35,12 +35,26 @@ export class TurnosService {
   public eliminarTurno( idTurno:string){
     return this.httpClient.delete(`${environment.hostFirebase}/turnos/${idTurno}.json`);
   }
+
+  public aceptarTurno( idTurno:string){
+    return this.httpClient.patch(`${environment.hostFirebase}/turnos/${idTurno}.json`,{estado:"APROBADO"});
+  } 
+  
+  public cancelarTurno( idTurno:string,estado:String,mensaje: String){
+    return this.httpClient.patch(`${environment.hostFirebase}/turnos/${idTurno}.json`,{estado:estado,resena:mensaje});
+  }
+
+  public atender( idTurno:string,mensaje: String){
+    return this.httpClient.patch(`${environment.hostFirebase}/turnos/${idTurno}.json`,{estado:"FINALIZADO",resena:mensaje});
+  }
+
+
   
   public verDisponibilidad( idProfesinal:string, hora:string, dia:string){
     return this.getTurnosProfesional(idProfesinal).then( (turnos:Turno[])=>{
         let disponible = true;
         turnos.forEach(turno=>{
-          console.log( hora,dia, turno.hora,turno.dia );
+          
           if(turno.hora == hora && turno.dia==dia){
             disponible= false;
           }
@@ -71,16 +85,16 @@ export class TurnosService {
   
 
   private objecToArray( datos: Object ){
-    const turnos = [];
+    const usuarios = [];
     if(datos == null) return [];
 
     Object.keys( datos ).forEach( key =>{
-          let turno: Turno = datos[key];
-          turno.id=key;
-          turnos.push(turno);
+          let usuario: any = datos[key];
+          usuario.id=key;
+          usuarios.push(usuario);
         
     })
-    return turnos;
+    return usuarios;
   }
 
 

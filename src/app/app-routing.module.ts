@@ -17,11 +17,11 @@ const routes: Routes = [
   {path: 'Login' , component: LoginComponent},
   {path: 'Home' , component: HomeComponent},
   {path: 'Registro' , component: RegistroComponent},
-  {path: 'MiPerfil' ,/*canActivate:[AuthGuard],*/ component: MiPerfilComponent},
-  {path: 'Atender' ,/*canActivate:[AuthGuard],*/ component: AtenderComponent},
-  {path: 'MisTurnos' ,/*canActivate:[AuthGuard],*/ component: MisTurnosComponent},
-  {path: 'Turnos' , /*canActivate:[AuthGuard],*/ component: TurnosComponent},
-  {path: 'Configuraciones' , /*canActivate:[AuthGuard,AdminGuard],*/ component: ConfiguracionesComponent},
+  {path: 'MiPerfil' ,canActivate:[AuthGuard], component: MiPerfilComponent},
+  {path: 'Atender' ,canActivate:[AuthGuard], component: AtenderComponent},
+  {path: 'MisTurnos' ,canActivate:[AuthGuard], component: MisTurnosComponent},
+  {path: 'Turnos' , canActivate:[AuthGuard], component: TurnosComponent},
+  {path: 'Configuraciones' , canActivate:[AuthGuard,AdminGuard], component: ConfiguracionesComponent},
 
   {path: '**', pathMatch: 'full', redirectTo: 'Home'}
 

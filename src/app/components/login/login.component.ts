@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
             break;
         case 'USER1':
               this.clave='123123';
-              this.usuario="rocchi.bogado@gmail.com";
+              this.usuario="g.iglesiasalonzo@gmail.com";
             break;
         case 'PROFESIONAL1':
             this.clave='123123';
