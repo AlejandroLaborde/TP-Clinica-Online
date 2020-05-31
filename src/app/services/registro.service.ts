@@ -37,6 +37,7 @@ export class RegistroService {
 
   public enviarMailRegistro(){
     this.angularFireAuth.currentUser.then( resp => {
+      
       resp.sendEmailVerification({
         handleCodeInApp: true,
         url: environment.urlVerify
