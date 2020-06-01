@@ -6,61 +6,84 @@
 
 
 
+  
+  <input type="text" class="form-control" placeholder="Busqueda inteligente" [(ngModel)]="busqueda" (keyup)="buscar2()" aria-label="Username" aria-describedby="basic-addon1">
 
-<div class="card" style="justify-content: center;">
-    <h5 class="card-header">Especialidad y Profesional</h5>
-    <div class="card-body">
-      <!-- <h5 class="card-title">Special title treatment</h5>
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
-        <form [formGroup]="formBuscar">
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-            <label class="input-group-text" for="inputGroupSelect01">Especialidad</label>
-            </div>
-            <select class="custom-select" id="inputGroupSelect01" (change)="cambioSeleccion($event)" formControlName="especialidad"> 
-            <option [value]="item.codigo" *ngFor="let item of this.especialidades">{{item.descripcion}}</option>
-            </select>
-         </div>
-         <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <label class="input-group-text" for="inputGroupSelect01">Profesinales</label>
-          </div>
-          <select class="custom-select"  id="profesionalInput" (change)="cambioProfesional($event)"> 
-              <option [value]="-1" *ngIf="this.profesionalesDisponibles.length!=0" selected>Elegir una Opcion</option>
-              <option [value]="0" *ngIf="this.profesionalesDisponibles.length==0"selected >No hay profesionales disponibles</option>
-              <option [value]="item.id"  *ngFor="let item of this.profesionalesDisponibles">{{item.apellido}}</option>
-          </select>
-        </div>
-        </form>
-    
-
-      <a class="btn btn-danger btn-block"  [hidden]="this.formBuscar.valid">seleccione una opcion</a>
-      <a class="btn btn-success btn-block" [hidden]="!this.formBuscar.valid" (click)="buscar(false)">Buscar</a>
-    </div>
-
-
-    <div class="card" style="justify-content: center;" *ngIf="listaHorarios" >
-      <h5 class="card-header">Día y Horario</h5>
-      <div class="card-body">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Profesional</th>
+        <th scope="col">Especialidades</th>
+        <th scope="col">Dias que atiende</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let profesional of profesionalesDisponibles; let i=index" >
         
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <label class="input-group-text" for="inputGroupSelect01">Dia</label>
-          </div>
-          <input type="date" [(ngModel)]="dia" class="form-control" (change)="cambioDia($event)" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-          <div class="input-group-prepend">
-            <label class="input-group-text" for="inputGroupSelect01" >Horario</label>
-          </div>
-          <select class="custom-select" [(ngModel)]="hora" id="profesionalInput"> 
-            <option [value]="item" *ngFor="let item of this.listaHorarios">{{item}}</option>
-        </select>
-        </div>
-        <a class="btn btn-primary btn-block" [hidden]="!this.dia"  (click)="reservar()">Reservar</a>
+        <td><img [src]="profesional.img1" width="50px" alt=""></td>
+        <td>{{profesional | nombre}}</td>
+        <td> 
+          <select class="form-control" required  id="especialidad"> 
+           <option [value]="item.id" *ngFor="let item of profesional.especialidades; let i=index">{{item.descripcion}}</option>
+          </select>
+        </td>
+        <td>{{profesional | dias}}</td>
+        <td>
+          <button type="button" class="btn btn-success" (click)="Solicitar(profesional)" data-toggle="modal" data-target="#exampleModal"> Solicitar Turno </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="this.profesionalesDisponibles.length==0" class="alert alert-warning" role="alert">
+    No se encontraron resultados para tu busqueda
+  </div>
+
+<!-- Modal -->
+<div *ngIf="profesionalSeleccionado" class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Turno</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
+      <div class="modal-body">
+        <div class="card" style="justify-content: center;"  >
+          <h5 class="card-header">Especialidad</h5>
+          <div class="card-body">
+            <select class="form-control" required  id="especialidad"  (change)="seleccionaEspe($event)"  > 
+              <option [value]=item *ngFor="let item of profesionalSeleccionado.especialidades; let i=index" >{{item.descripcion}}</option>
+             </select>
+          </div>
+        </div>
+        <div class="card" style="justify-content: center;"  >
+          <h5 class="card-header">Día y Horario</h5> 
+          <div class="card-body">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Dia</label>
+              </div>
+              <input type="date" [(ngModel)]="dia" class="form-control" (change)="cambioDia($event)" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+              <hr>
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01" >Horario</label>
+              </div>
+              <select class="custom-select" [(ngModel)]="hora" id="profesionalInput"> 
+                <option [value]="item" *ngFor="let item of this.listaHorarios">{{item}}</option>
+            </select>
+            </div>
+            <a class="btn btn-primary btn-block" [hidden]="!this.dia" data-dismiss="modal" (click)="reservar()">Reservar</a>
+           
+          </div>
+        </div>
+      </div>
+
     </div>
+  </div>
 </div>
-
-
 
 
 

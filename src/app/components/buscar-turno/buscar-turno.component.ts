@@ -18,12 +18,15 @@ export class BuscarTurnoComponent implements OnInit {
   @Input() especialidades:Especialidad[];
   @Input() profesionales:Profesional[];
   @Output() nuevoTurno = new EventEmitter<Turno>();
-  selectedEspecialidad: Especialidad;
+  especialidadSelected: Especialidad;
   profesionalesDisponibles:Profesional[]=[];
   profesionalSeleccionado:Profesional=null;
   listaHorarios:any[];
   dia;
   hora='8:00';
+  busqueda:string=null;
+ 
+  opcion="1";
   constructor(private formControl:FormBuilder,private turnosService:TurnosService) { }
 
   ngOnInit(): void {
@@ -34,52 +37,39 @@ export class BuscarTurnoComponent implements OnInit {
 
   }
 
+  Solicitar( prodesional: Profesional){
+   this.profesionalSeleccionado=prodesional;
+   this.especialidadSelected = prodesional.especialidades[0];
+   
+  }
+
   reservar(){
-    let turnoNuevo = new Turno(this.hora,this.dia,this.selectedEspecialidad,this.profesionalSeleccionado,'ESPERA');
+    let turnoNuevo = new Turno(this.hora,this.dia,this.especialidadSelected,this.profesionalSeleccionado,'ESPERA');
     this.nuevoTurno.emit(turnoNuevo);
   }
 
-  buscar(sabado){
-
-    if(this.formBuscar.valid){
-      this.especialidades.forEach(element => {
-        if(element.codigo == this.formBuscar.value.especialidad ){
-          this.preparaListaHorarios(this.profesionalSeleccionado,element,sabado);
-        }
-      });
-    }
-  }
-
-  cambioProfesional(e){
-    console.log(e.srcElement.value);
-   
-    if(e.srcElement.value != "-1"){
-
-      this.profesionales.forEach(profesional=>{
-        if(profesional.id == e.srcElement.value){
-          this.profesionalSeleccionado = profesional;
-        }
-      })
-    }
-  }
-
-  cambioSeleccion(e){
-    //this.profesionalSeleccionado=null;
+  seleccionaEspe(e){
     this.listaHorarios=null;
     let indice = e.target.selectedIndex;
-    this.profesionalesDisponibles=[];
-    this.profesionales.forEach(element => {
-      element.especialidades.forEach(especialidad => {
-        console.log(this.especialidades[indice].codigo);
-        if(especialidad.codigo == this.especialidades[indice].codigo){
-          this.selectedEspecialidad = especialidad;
-          this.profesionalesDisponibles.push(element);
-        }
-      });
-    });
+    this.especialidadSelected = this.profesionalSeleccionado.especialidades[indice];
+    this.buscar(false);
   }
 
+
+
+
+  buscar(sabado){
+     this.preparaListaHorarios(this.profesionalSeleccionado,this.especialidadSelected,sabado);
+  }
+
+
+  cambioEspecialidad(item){
+    console.log(item);
+  }
+
+
   cambioDia(event){
+    console.log("asd");
     var myDate = new Date(this.dia);
     let hoy = new Date();
     let diff = (myDate.getTime()-hoy.getTime())/(1000*60*60*24);
@@ -146,6 +136,54 @@ export class BuscarTurnoComponent implements OnInit {
       })
     }
 
+  }
+
+
+  buscar2(){
+    //nombre, apellido, dia , especialidades
+    this.profesionalesDisponibles=[];
+    let palabraClave = this.busqueda.toLocaleLowerCase();
+    if(palabraClave.length!=0){
+      this.profesionales.forEach(profesional=>{
+        if(profesional.nombre.toLocaleLowerCase().includes(palabraClave)){
+          this.agrega(this.profesionalesDisponibles,profesional);
+        }
+        if(profesional.apellido.toLocaleLowerCase().includes(palabraClave)){
+          this.agrega(this.profesionalesDisponibles,profesional);
+        }
+        profesional.especialidades.forEach(especialidad=>{
+          if(especialidad.descripcion.toLocaleLowerCase().includes(palabraClave)){
+            this.agrega(this.profesionalesDisponibles,profesional);
+          }
+        })
+        console.log(profesional.dias);
+        profesional.dias.forEach(dia=>{
+          if(dia.trabaja && dia.dia.toLocaleLowerCase().includes(palabraClave)){
+            this.agrega(this.profesionalesDisponibles,profesional);
+          }
+        })
+      })
+    }else{
+      this.profesionalesDisponibles=[];
+    }
+
+  }
+
+  agrega(lista, profesional){
+    if(!this.contains(lista, profesional)){
+      lista.push(profesional);
+    }
+
+  }
+
+  contains(lista:Profesional[], profesional:Profesional){
+    let contains = false;
+    lista.forEach(prof=>{
+      if(prof.id==profesional.id){
+        contains=true;
+      }
+    })
+    return contains;
   }
 
 

@@ -36,6 +36,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { EncuestaProfesionalComponent } from './components/encuesta-profesional/encuesta-profesional.component';
 import { EncuestaPacienteComponent } from './components/encuesta-paciente/encuesta-paciente.component';
 import { DiasYHorariosComponent } from './components/dias-yhorarios/dias-yhorarios.component';
+import { NombrePipe } from './pipes/nombre.pipe';
+import { DiasPipe } from './pipes/dias.pipe';
 
 
 @NgModule({
@@ -59,7 +61,9 @@ import { DiasYHorariosComponent } from './components/dias-yhorarios/dias-yhorari
     AltaEspecialidadesComponent,
     EncuestaProfesionalComponent,
     EncuestaPacienteComponent,
-    DiasYHorariosComponent
+    DiasYHorariosComponent,
+    NombrePipe,
+    DiasPipe
 
   ],
   imports: [
