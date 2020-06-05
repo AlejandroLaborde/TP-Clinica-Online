@@ -43,7 +43,7 @@ export class RegistroComponent implements OnInit {
     apellido: new FormControl('', [ Validators.minLength(3), Validators.required]),
     clave: new FormControl('', [Validators.minLength(6), Validators.required]),
     copyClave: new FormControl('', [Validators.minLength(6),Validators.required]),
-    recaptchaReactive: new FormControl(null,Validators.required),
+    recaptchaReactive: new FormControl(null,[Validators.required]),
     especialidadesSelected: new FormControl(this.especialidades[0])
   });
 
@@ -55,7 +55,7 @@ export class RegistroComponent implements OnInit {
 
   resolved(captchaResponse: string, res) {
     console.log(`Resolved response token: ${captchaResponse}`);
-   
+    //res.getResponse(captchaResponse);
   }
   onSubmit() {
     const form = this.formRegistro.value;

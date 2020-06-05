@@ -32,12 +32,13 @@ import { ListaTurnosComponent } from './components/lista-turnos/lista-turnos.com
 import { MisTurnosComponent } from './components/mis-turnos/mis-turnos.component';
 import { AtenderComponent } from './components/atender/atender.component';
 import { AltaEspecialidadesComponent } from './components/alta-especialidades/alta-especialidades.component';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { EncuestaProfesionalComponent } from './components/encuesta-profesional/encuesta-profesional.component';
 import { EncuestaPacienteComponent } from './components/encuesta-paciente/encuesta-paciente.component';
 import { DiasYHorariosComponent } from './components/dias-yhorarios/dias-yhorarios.component';
 import { NombrePipe } from './pipes/nombre.pipe';
 import { DiasPipe } from './pipes/dias.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import { DiasPipe } from './pipes/dias.pipe';
     EncuestaPacienteComponent,
     DiasYHorariosComponent,
     NombrePipe,
-    DiasPipe
+    DiasPipe,
+    
 
   ],
   imports: [
@@ -76,11 +78,10 @@ import { DiasPipe } from './pipes/dias.pipe';
     RecaptchaFormsModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule,
+    HttpClientModule, 
     AngularFirestoreModule,
-    NoopAnimationsModule,
-    
-    
+    BrowserAnimationsModule
+
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'es-Ar' } ],
   bootstrap: [AppComponent]

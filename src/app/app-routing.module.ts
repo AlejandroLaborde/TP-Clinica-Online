@@ -14,9 +14,9 @@ import { AtenderComponent } from './components/atender/atender.component';
 
 const routes: Routes = [
   
-  {path: 'Login' , component: LoginComponent},
-  {path: 'Home' , component: HomeComponent},
-  {path: 'Registro' , component: RegistroComponent},
+  {path: 'Login' , component: LoginComponent , data: {animation: 'Loguin'}},
+  {path: 'Home' , component: HomeComponent, data: {animation: 'Home'}},
+  {path: 'Registro' , component: RegistroComponent,data: {animation: 'Registro'}},
   {path: 'MiPerfil' ,canActivate:[AuthGuard], component: MiPerfilComponent},
   {path: 'Atender' ,canActivate:[AuthGuard], component: AtenderComponent},
   {path: 'MisTurnos' ,/*canActivate:[AuthGuard],*/ component: MisTurnosComponent},

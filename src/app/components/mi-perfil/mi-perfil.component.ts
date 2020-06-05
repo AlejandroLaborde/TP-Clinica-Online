@@ -22,14 +22,7 @@ export class MiPerfilComponent implements OnInit {
 
     this.usuarioService.getDatosPersona(resp.email).subscribe(resp2=>{
       this.usuario=resp2;
-     
      });
-    this.fileService.referenciaCloudStorage(resp.email+"_img1").subscribe( ref=>{
-        this.imagen1=ref;
-     });
-     this.fileService.referenciaCloudStorage(resp.email+"_img2").subscribe( ref2=>{
-      this.imagen2=ref2;
-   })
    }).finally(()=>{
      Swal.close();
    })

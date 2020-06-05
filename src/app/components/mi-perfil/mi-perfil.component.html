@@ -8,8 +8,8 @@
    
     
     <div *ngIf="usuario" class="card-body">
-        <img [src]="imagen1" width="150px" height="150px" alt="" srcset="">
-        <img [src]="imagen2" width="150px" height="150px" alt="" srcset="">
+        <img [src]="this.usuario.img1" width="150px" height="150px" alt="" srcset="">
+        <img [src]="this.usuario.img2" width="150px" height="150px" alt="" srcset="">
       <h5 class="card-title">Nombre: {{usuario.nombre}}</h5>
       <h5 class="card-title">Apellido: {{usuario.apellido}}</h5>
       <h5 class="card-title">Edad: {{usuario.edad}} años</h5>
