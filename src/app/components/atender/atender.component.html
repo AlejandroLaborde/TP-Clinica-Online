@@ -11,6 +11,7 @@
           <button  class="btn btn-danger" (click)="cambiarHorarios()"><i class="fa fa-calendar"></i> Cambiar mis dias/Horarios</button>
         </div>
         <app-dias-yhorarios *ngIf="horarios" [diasProfesional]="this.diasProfesional" (diasProfesionalchange)="cambioDias($event)"></app-dias-yhorarios>
+        <app-historia-clinica *ngIf="encuesta" [historia]="this.historialInicial" (historiaClinica)="guardaHistoria($event)"></app-historia-clinica>
         <app-encuesta-paciente *ngIf="encuesta" (encuestaPaciente)="escuchaEncuesta($event)"  ></app-encuesta-paciente>
         
        <div *ngIf="!encuesta" class="row">

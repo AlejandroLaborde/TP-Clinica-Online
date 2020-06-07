@@ -23,7 +23,7 @@ export class AtenderComponent implements OnInit {
   horarios:boolean=false;
   diasProfesional:Dia[];
   persona:Usuario;
-
+  historialInicial=[{caracteristica:'edad',valor:''},{caracteristica:'temperatura',valor:''},{caracteristica:'presion',valor:''}];
   constructor( private turnosService:TurnosService,
               private loginService:LoginService,
               private usuarioService:UsuariosService,
@@ -150,6 +150,12 @@ export class AtenderComponent implements OnInit {
     this.turnosService.altaEncuestaPaciente(this.turnoEncuesta,evento).subscribe(()=>{
       this.encuesta=false;
       this.turnoEncuesta=null;
+    })
+  }
+
+  guardaHistoria(historia){
+    this.turnosService.guardarHistoriaClinica(this.turnoEncuesta,historia).subscribe((s)=>{
+      console.log("guardo la historia");
     })
   }
 

@@ -17,7 +17,15 @@ export class HomeComponent implements OnInit {
 
   
   constructor( private router:Router, private asd:AngularFireDatabase) { 
-    console.log(asd.list('/turnos', ref => ref.orderByChild('size').equalTo('large')));
+
+    asd.list('/especialidades', ref => ref).valueChanges().subscribe(dd=>{
+      console.log(dd);
+    })
+    asd.list('/turnos', ref => ref.orderByChild("estado").equalTo("FINALIZADO")).valueChanges().subscribe(dd=>{
+      console.log(dd);
+    })
+
+    asd.list
   }
 
   ngOnInit(): void {

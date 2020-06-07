@@ -11,6 +11,7 @@ export class EncuestaPacienteComponent implements OnInit {
 
   encuesta:FormGroup;
   @Output() encuestaPaciente= new EventEmitter<any>();
+
   constructor(private miConstructor: FormBuilder ) { }
 
   ngOnInit(): void {
@@ -32,5 +33,5 @@ export class EncuestaPacienteComponent implements OnInit {
     })
   }
 
-  
+
 }

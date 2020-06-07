@@ -1,0 +1,23 @@
+
+
+
+<h3>Historia Clinica</h3>
+
+<table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Caracteristica</th>
+        <th scope="col">Valor</th>
+        <th scope="col" style="color: green;" *ngIf="this.historia.length<6" (click)="agregaLinea()"><i class="fa fa-plus"></i></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of historia; let i =index">
+        <th scope="row">{{i}}</th>
+        <td><input type="text" [readOnly]="i==0 || i==1 || i==2" class="form-control" name="" [(ngModel)]="item.caracteristica" [value]="item.caracteristica" id=""></td>
+        <td><input type="text" class="form-control" name="" [(ngModel)]="item.valor" [value]="item.valor" id=""></td>
+      </tr>
+    </tbody>
+</table>
+<tr style="display: flex; justify-content: flex-end;"><button class="btn btn-success" (click)="guardar()"  >Guardar</button></tr> <br>

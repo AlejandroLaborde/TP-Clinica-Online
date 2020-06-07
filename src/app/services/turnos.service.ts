@@ -33,7 +33,11 @@ export class TurnosService {
   }
   
   public altaEncuestaPaciente( turno:Turno , encuesta ){
-    return this.httpClient.patch(`${environment.hostFirebase}/turnos/${turno.id}.json`,{encuestaPaciente:encuesta});
+    return this.httpClient.patch(`${environment.hostFirebase}/turnos/${turno.id}.json`,{encuestaPaciente:encuesta,estado:'FINALIZADO'});
+  }
+
+  public guardarHistoriaClinica( turno:Turno , historial ){
+    return this.httpClient.patch(`${environment.hostFirebase}/turnos/${turno.id}.json`,{historial:historial});
   }
 
   public altaResena( idTurno:string, resena:string ){

@@ -10,6 +10,8 @@ import { AdminGuard } from './guards/admin.guard';
 import { ConfiguracionesComponent } from './components/configuraciones/configuraciones.component';
 import { MisTurnosComponent } from './components/mis-turnos/mis-turnos.component';
 import { AtenderComponent } from './components/atender/atender.component';
+import { BuscarTurnoComponent } from './components/buscar-turno/buscar-turno.component';
+import { BusquedaInformacionComponent } from './components/busqueda-informacion/busqueda-informacion.component';
 
 
 const routes: Routes = [
@@ -21,7 +23,8 @@ const routes: Routes = [
   {path: 'Atender' ,canActivate:[AuthGuard], component: AtenderComponent},
   {path: 'MisTurnos' ,/*canActivate:[AuthGuard],*/ component: MisTurnosComponent},
   {path: 'Turnos' , /*canActivate:[AuthGuard],*/ component: TurnosComponent},
-  {path: 'Configuraciones' , canActivate:[AuthGuard,AdminGuard], component: ConfiguracionesComponent},
+  {path: 'BuscadorTurnos' , /*canActivate:[AuthGuard,AdminGuard],*/ component: BusquedaInformacionComponent},
+  {path: 'Configuraciones' ,/* canActivate:[AuthGuard,AdminGuard],*/ component: ConfiguracionesComponent},
 
   {path: '**', pathMatch: 'full', redirectTo: 'Home'}
 

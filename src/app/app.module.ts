@@ -38,6 +38,8 @@ import { DiasYHorariosComponent } from './components/dias-yhorarios/dias-yhorari
 import { NombrePipe } from './pipes/nombre.pipe';
 import { DiasPipe } from './pipes/dias.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HistoriaClinicaComponent } from './components/historia-clinica/historia-clinica.component';
+import { BusquedaInformacionComponent } from './components/busqueda-informacion/busqueda-informacion.component';
 
 
 
@@ -65,6 +67,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     DiasYHorariosComponent,
     NombrePipe,
     DiasPipe,
+    HistoriaClinicaComponent,
+    BusquedaInformacionComponent,
     
 
   ],

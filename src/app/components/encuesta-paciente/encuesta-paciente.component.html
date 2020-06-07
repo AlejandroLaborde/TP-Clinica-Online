@@ -10,10 +10,10 @@
     <div class="card-header">
       Reseña Cliente
     </div>
+    <h5 class="card-title">Historia Clinica</h5><br>
     <div class="card-body">
-     
     <form [formGroup]="encuesta" (submit)="submit()">
-
+         
         <h5 class="card-title">Reseña</h5><br>
         <textarea class="form-control" aria-label="With textarea" formControlName="comentario"></textarea>
           <br>
@@ -31,7 +31,7 @@
           <option value="3">Muy desconforme</option>
         </select>
 
-      <button class="btn btn-primary btn-block">Enviar</button>
+      <button class="btn btn-primary btn-block">Guardar</button>
     </form>
     </div>
   </div>
