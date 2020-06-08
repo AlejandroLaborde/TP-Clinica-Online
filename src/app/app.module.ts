@@ -40,6 +40,7 @@ import { DiasPipe } from './pipes/dias.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HistoriaClinicaComponent } from './components/historia-clinica/historia-clinica.component';
 import { BusquedaInformacionComponent } from './components/busqueda-informacion/busqueda-informacion.component';
+import { ListadoTurnosComponent } from './components/listado-turnos/listado-turnos.component';
 
 
 
@@ -69,6 +70,7 @@ import { BusquedaInformacionComponent } from './components/busqueda-informacion/
     DiasPipe,
     HistoriaClinicaComponent,
     BusquedaInformacionComponent,
+    ListadoTurnosComponent,
     
 
   ],

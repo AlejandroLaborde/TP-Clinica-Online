@@ -6,8 +6,81 @@
       <p>* Se podra realizar  búsquedas sobre los turnos realizados por nombre paciente , nombre del médico, especialidad, temperatura corporal, fecha)
         y también por los campos dinámicos </p>
  
-
+        <app-listado-turnos [turnos] = "tunosAMostrar" data-toggle="modal" data-target="#exampleModal" (turnoSelected)="verDetalle($event)"></app-listado-turnos>
 
     </div>
 
+</div>
+
+<!-- Modal -->
+<div *ngIf="turno" class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Turno</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card" style="justify-content: center;"  >
+          <h5 class="card-header">Día y Horario</h5>
+          <div class="card-body">
+            <h3>{{turno.dia}} - {{turno.hora}} </h3>
+          </div>
+        </div>
+        <div class="card" style="justify-content: center;"  >
+          <h5 class="card-header" data-toggle="collapse" href="#collapseProfesional">Profesional</h5> 
+          <div class="card-body" class="collapse" id="collapseProfesional">
+           <div class="col-md-4" style="display: flex;">
+              <img [src]="this.turno.profesional.img1" class="card-img" alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-text"> {{turno.profesional | nombre}}</h5>
+                <h6 class="card-title">{{turno.especialidad.descripcion}}</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card"  style="justify-content: center;"  >
+          <h5 class="card-header" data-toggle="collapse" href="#collapseExample">Paciente</h5> 
+          <div class="card-body" class="collapse" id="collapseExample">
+            <div class="col-md-4" style="display: flex;">
+              <img [src]="this.turno.paciente.img1" class="card-img" alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h6 class="card-title">{{turno.paciente | nombre}}</h6>
+                <h6 class="card-title">{{turno.paciente.mail }}</h6>
+              </div>
+            </div>
+           
+          </div>
+        </div>
+        <div class="card" style="justify-content: center;"  >
+          <h5 class="card-header" data-toggle="collapse" href="#collapseHistoria">Historia Clinica</h5> 
+          <div class="card-body" class="collapse" id="collapseHistoria">
+           <div class="col-md-12" style="display: flex;">
+            <table class="table" *ngIf="turno.historial">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">Caracteristica</th>
+                  <th scope="col">Valor</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of turno.historial; let i =index">
+                  <td>{{item.caracteristica}}</td>
+                  <td>{{item.valor}}</td>
+                </tr>
+              </tbody>
+            </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </div>

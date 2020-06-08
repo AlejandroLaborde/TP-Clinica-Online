@@ -1,0 +1,24 @@
+
+
+
+
+
+
+<table *ngIf="!turnos" class="table">
+    <thead>
+      <tr>
+        <th scope="col">Profesional</th>
+        <th scope="col">Especialidad</th>
+        <th scope="col">Paciente</th>
+        <th scope="col">Fecha</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let turno of turnos" (click)="seleccion(turno)">
+        <td>{{turno.profesional | nombre}}</td>
+        <td>{{turno.especialidad.descripcion}}</td>
+        <td>{{turno.paciente | nombre}}</td>
+        <td>{{turno.dia}}</td>
+      </tr>
+    </tbody>
+  </table>
