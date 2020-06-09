@@ -7,7 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class ListadoTurnosComponent implements OnInit {
 
-  @Input() turnos;
+  @Input() turnos=[];
   @Output() turnoSelected= new EventEmitter<any>();
   constructor() { }
 

@@ -17,16 +17,19 @@ export class BusquedaInformacionComponent implements OnInit {
 
   ngOnInit(): void {
     this.turnos.getTodosTurnos().subscribe(todos=>{
+      console.log(todos);
       this.totalTurnos = todos;
     })
   }
   
 
   buscar(){
+    console.log(this.busqueda);
     this.tunosAMostrar=[];
     let palabraClave = this.busqueda.toLocaleLowerCase();
     if(palabraClave.length!=0){
       this.totalTurnos.forEach(turno=>{
+        
         if(turno.profesional.nombre.toLocaleLowerCase().includes(palabraClave)){
           this.agrega(this.tunosAMostrar,turno);
         }
@@ -56,6 +59,7 @@ export class BusquedaInformacionComponent implements OnInit {
   }
 
   agrega(lista, turno){
+    
     if(!this.contains(lista, turno)){
       lista.push(turno);
     }

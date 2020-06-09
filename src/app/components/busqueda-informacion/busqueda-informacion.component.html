@@ -6,7 +6,7 @@
       <p>* Se podra realizar  búsquedas sobre los turnos realizados por nombre paciente , nombre del médico, especialidad, temperatura corporal, fecha)
         y también por los campos dinámicos </p>
  
-        <app-listado-turnos [turnos] = "tunosAMostrar" data-toggle="modal" data-target="#exampleModal" (turnoSelected)="verDetalle($event)"></app-listado-turnos>
+        <app-listado-turnos [turnos] = "this.tunosAMostrar" data-toggle="modal" data-target="#exampleModal" (turnoSelected)="verDetalle($event)"></app-listado-turnos>
 
     </div>
 
