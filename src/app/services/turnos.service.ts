@@ -39,7 +39,7 @@ export class TurnosService {
   public guardarHistoriaClinica( turno:Turno , historial ){
     return this.httpClient.patch(`${environment.hostFirebase}/turnos/${turno.id}.json`,{historial:historial});
   }
-
+ 
   public altaResena( idTurno:string, resena:string ){
     return this.httpClient.patch(`${environment.hostFirebase}/turnos/${idTurno}.json`,{resena:resena});
   }
@@ -59,9 +59,11 @@ export class TurnosService {
   public atender( idTurno:string,mensaje: String){
     return this.httpClient.patch(`${environment.hostFirebase}/turnos/${idTurno}.json`,{estado:"FINALIZADO",resena:mensaje});
   }
-
-
   
+ 
+
+
+
   public verDisponibilidad( idProfesinal:string, hora:string, dia:string){
     return this.getTurnosProfesional(idProfesinal).then( (turnos:Turno[])=>{
         let disponible = true;

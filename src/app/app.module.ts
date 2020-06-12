@@ -8,6 +8,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestore,AngularFirestoreCollection, AngularFirestoreModule } from '@angular/fire/firestore';
 import { HttpClientModule } from '@angular/common/http';
 import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
+import { ChartModule } from 'angular-highcharts';
+
 import { registerLocaleData } from '@angular/common';
 
 
@@ -41,6 +43,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HistoriaClinicaComponent } from './components/historia-clinica/historia-clinica.component';
 import { BusquedaInformacionComponent } from './components/busqueda-informacion/busqueda-informacion.component';
 import { ListadoTurnosComponent } from './components/listado-turnos/listado-turnos.component';
+import { InformesComponent } from './components/informes/informes.component';
+import { GraficoComponent } from './components/grafico/grafico.component';
 
 
 
@@ -71,6 +75,8 @@ import { ListadoTurnosComponent } from './components/listado-turnos/listado-turn
     HistoriaClinicaComponent,
     BusquedaInformacionComponent,
     ListadoTurnosComponent,
+    InformesComponent,
+    GraficoComponent,
     
 
   ],
@@ -86,7 +92,8 @@ import { ListadoTurnosComponent } from './components/listado-turnos/listado-turn
     FormsModule,
     HttpClientModule, 
     AngularFirestoreModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ChartModule
 
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'es-Ar' } ],

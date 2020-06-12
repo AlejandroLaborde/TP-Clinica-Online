@@ -56,6 +56,10 @@ export class UsuariosService {
     return this.httpClient.get(`${environment.hostFirebase}usuarios/${idProfesional}/dias.json`).pipe(map(resp=>{return this.objecToArray(resp)}));
   }
 
+  ingreso(idProfesional){
+    this.httpClient.post (`${environment.hostFirebase}usuarios/${idProfesional}/ingresos.json`,{dia:new Date()}).subscribe();
+  }
+
   private filtraPersonas(mail,lista){
     let usuario:Usuario;
     this.objecToArray(lista).forEach(element=>{

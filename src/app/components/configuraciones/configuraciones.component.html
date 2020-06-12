@@ -9,6 +9,7 @@
 <app-especialidades></app-especialidades>
 <div style="justify-content: center;display: flex">
     <app-alta-especialidades (nuevaEspecialidad)="altaEspecialidad($event)"></app-alta-especialidades>
-    <button class="btn btn-success" [routerLink]="['/BuscadorTurnos']" routerLinkActive="router-link-active" > Buscador de turnos </button>
-</div>
+</div><br>
+    <button class="btn btn-success" [routerLink]="['/BuscadorTurnos']" routerLinkActive="router-link-active" > <i class="fa fa-address-card"></i> Buscador de turnos </button>
+    <button class="btn btn-danger" [routerLink]="['/Informes']" routerLinkActive="router-link-active" > <i class="fa fa-calculator"></i> Informes </button>
 </div>

@@ -12,6 +12,7 @@ import { MisTurnosComponent } from './components/mis-turnos/mis-turnos.component
 import { AtenderComponent } from './components/atender/atender.component';
 import { BuscarTurnoComponent } from './components/buscar-turno/buscar-turno.component';
 import { BusquedaInformacionComponent } from './components/busqueda-informacion/busqueda-informacion.component';
+import { InformesComponent } from './components/informes/informes.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path: 'Turnos' , /*canActivate:[AuthGuard],*/ component: TurnosComponent},
   {path: 'BuscadorTurnos' , /*canActivate:[AuthGuard,AdminGuard],*/ component: BusquedaInformacionComponent},
   {path: 'Configuraciones' ,/* canActivate:[AuthGuard,AdminGuard],*/ component: ConfiguracionesComponent},
+  {path: 'Informes' ,/* canActivate:[AuthGuard,AdminGuard],*/ component: InformesComponent},
 
   {path: '**', pathMatch: 'full', redirectTo: 'Home'}
 

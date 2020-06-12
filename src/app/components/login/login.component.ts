@@ -4,6 +4,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import {Subscription} from "rxjs";
 import Swal from 'sweetalert2';
 import { LoginService } from 'src/app/services/login.service';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private logInService: LoginService
+    private logInService: LoginService,
+    private usuarioService: UsuariosService
     ) {
      
 
@@ -37,7 +39,10 @@ export class LoginComponent implements OnInit {
         console.log(resp);
         if(resp){
           if(resp.user.emailVerified){
-            this.router.navigate(['/Principal']);
+            this.usuarioService.getDatosPersona(resp.user.email).subscribe(resp=>{
+              this.usuarioService.ingreso(resp.id);
+              this.router.navigate(['/Principal']);
+            })
             Swal.close();
           }else{
             Swal.fire({
