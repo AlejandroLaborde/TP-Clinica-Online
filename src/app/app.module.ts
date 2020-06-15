@@ -8,8 +8,11 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestore,AngularFirestoreCollection, AngularFirestoreModule } from '@angular/fire/firestore';
 import { HttpClientModule } from '@angular/common/http';
 import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
-import { ChartModule } from 'angular-highcharts';
-
+import { ChartModule , HIGHCHARTS_MODULES } from 'angular-highcharts';
+import exporting from 'highcharts/modules/exporting.src.js'
+export function highchartModules(){
+  return [exporting]
+}
 import { registerLocaleData } from '@angular/common';
 
 
@@ -96,7 +99,8 @@ import { GraficoComponent } from './components/grafico/grafico.component';
     ChartModule
 
   ],
-  providers: [{ provide: LOCALE_ID, useValue: 'es-Ar' } ],
+  providers: [{ provide: LOCALE_ID, useValue: 'es-Ar' },
+              {provide:HIGHCHARTS_MODULES,useFactory:highchartModules} ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -100,7 +100,7 @@ export class UsuariosService {
     })
     return usuario;
   }
-  private objecToArray( datos: Object ){
+  public objecToArray( datos: Object ){
     const usuarios = [];
     if(datos == null) return [];
 
