@@ -22,11 +22,11 @@ const routes: Routes = [
   {path: 'Registro' , component: RegistroComponent,data: {animation: 'Registro'}},
   {path: 'MiPerfil' ,canActivate:[AuthGuard], component: MiPerfilComponent},
   {path: 'Atender' ,canActivate:[AuthGuard], component: AtenderComponent},
-  {path: 'MisTurnos' ,/*canActivate:[AuthGuard],*/ component: MisTurnosComponent},
-  {path: 'Turnos' , /*canActivate:[AuthGuard],*/ component: TurnosComponent},
-  {path: 'BuscadorTurnos' , /*canActivate:[AuthGuard,AdminGuard],*/ component: BusquedaInformacionComponent},
-  {path: 'Configuraciones' ,/* canActivate:[AuthGuard,AdminGuard],*/ component: ConfiguracionesComponent},
-  {path: 'Informes' ,/* canActivate:[AuthGuard,AdminGuard],*/ component: InformesComponent},
+  {path: 'MisTurnos' ,canActivate:[AuthGuard], component: MisTurnosComponent},
+  {path: 'Turnos' , canActivate:[AuthGuard], component: TurnosComponent},
+  {path: 'BuscadorTurnos' , canActivate:[AuthGuard,AdminGuard], component: BusquedaInformacionComponent},
+  {path: 'Configuraciones' , canActivate:[AuthGuard,AdminGuard], component: ConfiguracionesComponent},
+  {path: 'Informes' , canActivate:[AuthGuard,AdminGuard], component: InformesComponent},
 
   {path: '**', pathMatch: 'full', redirectTo: 'Home'}
 
