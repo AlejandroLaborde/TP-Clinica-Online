@@ -12,6 +12,10 @@ lunes a viernes en el horario de 8:00 a 19:00.
 sábados en el horario de 8:00 a 14:00.
 ```
 
+### Solicitar Turno ➕
+
+![principal](https://github.com/AlejandroLaborde/TP-Clinica-Online/blob/master/imagenes_readme/reserva.gif)
+
 ### Usuarios 🔧
 
 _Tenemos 3 tipos de usuarios, ADMINISTRADOR, PROFESIONAL y USUARIO_
@@ -44,6 +48,10 @@ Luego de esto, puede ser atendido, y responder un cuestionario sobre la atencion
 ### Registro ➕
 
 ![principal](https://github.com/AlejandroLaborde/TP-Clinica-Online/blob/master/imagenes_readme/registro.gif)
+
+### Reportes y graficos
+
+![principal](https://github.com/AlejandroLaborde/TP-Clinica-Online/blob/master/imagenes_readme/graficos.gif)
 
 ## Despliegue 📦
 
