@@ -48,6 +48,7 @@ import { BusquedaInformacionComponent } from './components/busqueda-informacion/
 import { ListadoTurnosComponent } from './components/listado-turnos/listado-turnos.component';
 import { InformesComponent } from './components/informes/informes.component';
 import { GraficoComponent } from './components/grafico/grafico.component';
+import { MiDirectivaDirective } from './directivas/mi-directiva.directive';
 
 
 
@@ -80,6 +81,7 @@ import { GraficoComponent } from './components/grafico/grafico.component';
     ListadoTurnosComponent,
     InformesComponent,
     GraficoComponent,
+    MiDirectivaDirective,
     
 
   ],

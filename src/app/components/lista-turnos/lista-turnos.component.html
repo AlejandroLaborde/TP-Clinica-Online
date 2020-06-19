@@ -15,7 +15,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr  *ngFor="let turno of turnos; let i=index" >
+        <tr  *ngFor="let turno of turnos; let i=index" [appMiDirectiva]="turno.estado=='FINALIZADO'" >
           <th scope="row">{{i}}</th>
           <td>{{turno.especialidad.descripcion}}</td>
           <td>{{turno.profesional.nombre}} {{turno.profesional.apellido}}</td>

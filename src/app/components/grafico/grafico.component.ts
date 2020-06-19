@@ -6,9 +6,10 @@ import { Especialidad } from 'src/app/models/especialidad';
 import { Turno } from 'src/app/models/turno';
 import { NgIf } from '@angular/common';
 import { Key } from 'protractor';
-import { DatoGrafico } from 'src/app/models/datoGrafico';
+import { DatoGrafico, DatoGraficoPie } from 'src/app/models/datoGrafico';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { Chart } from 'angular-highcharts';
+import { Profesional } from 'src/app/models/profesional';
 
 @Component({
   selector: 'app-grafico',
@@ -31,6 +32,7 @@ export class GraficoComponent implements OnInit {
   datachart2=[];
   datachart3=[];
   datachart4=[];
+  datachart5=[];
   profesionales;
 
   
@@ -46,6 +48,7 @@ export class GraficoComponent implements OnInit {
       });
       this.usuariosService.getProfesionalesAprobado().subscribe( resp=>{
         this.profesionales = resp;
+        this.preparachart5(resp);
       })
 
    }
@@ -77,13 +80,30 @@ export class GraficoComponent implements OnInit {
 
   preparachart4(resp){
     resp.forEach( dato=>{
-      console.log(dato);
+     
       if(this.contains(this.datachart4,dato.profesional.nombre +" "+ dato.profesional.apellido)==-1){
         this.datachart4.push(new DatoGrafico(dato.profesional.nombre +" "+ dato.profesional.apellido,[1]));
       }else{
         this.datachart4[this.contains(this.datachart4,dato.profesional.nombre +" "+ dato.profesional.apellido)].data[0]++;
       }
     })
+  }
+
+  preparachart5(resp){
+    const diasSemana=['LUNES','MARTES','MIERCOLES','JUEVES','VIERNES','SABADO'];
+
+    diasSemana.forEach( dia=>{
+      this.datachart5.push(new DatoGrafico(dia,[0]));
+    })
+    resp.forEach( (dato:Profesional)=>{
+      dato.dias.forEach( diaProf=>{
+        if(diaProf.trabaja){
+          this.datachart5[this.contains(this.datachart5,diaProf.dia)].data[0]++;
+        }
+      })
+    })
+
+    
   }
 
   contains3(lista,dato){
@@ -122,7 +142,7 @@ export class GraficoComponent implements OnInit {
         this.fileService.exportAsExcelFile(this.preparaParaDescargar(this.datachart4),'medicosxTurno');
         break;
       case 5:
-        this.fileService.exportAsExcelFile([JSON.stringify({dato:'dd'})],'medicosXDia');
+        this.fileService.exportAsExcelFile(this.preparaParaDescargar(this.datachart5),'medicosXDia');
         break;
     }
   }
@@ -158,6 +178,7 @@ export class GraficoComponent implements OnInit {
         this.cinco=false;
         break;
       case 5:
+        this.armarchart5();
         this.dos=false;
         this.tres=false;
         this.cuatro=false;
@@ -257,5 +278,29 @@ export class GraficoComponent implements OnInit {
       },
       series: this.datachart4
        });
+  }
+
+  armarchart5(){
+    this.chart5 = new Chart({
+      chart: {
+        renderTo: 'container',
+        type: 'column'
+      },
+      title: {
+          text: 'Cantidad de Profesionales por dia'
+      },
+      xAxis: {  
+          categories:['Profesionales']
+
+      },
+      yAxis: {
+          title: {
+              text: 'Dias Semana'
+          },
+          tickInterval: 1
+      },
+      series: this.datachart5
+     
+    });
   }
 }
